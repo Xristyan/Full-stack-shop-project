@@ -1,0 +1,89 @@
+.tapsContainer {
+  margin: 2rem auto;
+  max-width: 60rem;
+  display: flex;
+  border: none;
+  flex-direction: column;
+  justify-content: baseline;
+  /* box-shadow: 0 10px 10px rgba(0, 0, 0, 0.26); */
+  overflow: hidden;
+  font-family: system-ui;
+}
+.tabs {
+  margin-top: 0.5rem;
+  padding: 0 5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.button {
+  font: inherit;
+  border: 0.2rem solid orange;
+  background-color: #242424;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.26);
+  color: white;
+  padding: 0.75rem 3rem;
+  max-width: 8rem;
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 100;
+  transform: translateY(50%);
+  transition: transform 1s;
+}
+.contentContainer {
+  background-color: rgb(251, 251, 251);
+  max-width: 60rem;
+  padding: 4rem 1rem;
+  gap: 1rem;
+  border-radius: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.imgContainer {
+  border-radius: 50%;
+  width: 7rem;
+  height: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid orange;
+  overflow: hidden;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.26);
+}
+.operationsActive {
+  transform: translateY(0.5rem);
+  transition: all 1s;
+}
+.image {
+  max-width: 7rem;
+  height: 7rem;
+  object-fit: fill;
+}
+.description {
+  background-color: rgb(224, 153, 21);
+  border-radius: 1rem;
+  padding: 1rem;
+  font-family: system-ui;
+}
+.description {
+  max-width: 25rem;
+  color: white;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.26);
+}
+.description button {
+  padding: 0.5rem;
+  border-radius: 0.8rem;
+  border: none;
+  box-shadow: 1px 1px 10px rgb(209, 202, 202);
+}
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 8.5px;
+  }
+}

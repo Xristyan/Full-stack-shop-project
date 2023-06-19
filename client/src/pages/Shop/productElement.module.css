@@ -1,0 +1,36 @@
+.logo {
+  max-width: 100%;
+  /* padding: 0 9rem; */
+  /* border: 3px solid rgb(255, 180, 4); */
+  height: 26rem;
+  display: flex;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.26);
+  overflow: hidden;
+  font-family: system-ui;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+.imageContainer {
+  max-width: 100%;
+  height: 20rem;
+  background-color: rgb(255, 255, 255);
+}
+.descriptin {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: black;
+
+  align-items: center;
+}
+.descriptin p {
+  text-align: center;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}

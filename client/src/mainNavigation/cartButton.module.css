@@ -1,0 +1,62 @@
+.button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.2rem;
+  font-family: system-ui;
+}
+.button:hover,
+.button:active {
+  color: orange;
+}
+
+.amount {
+  display: flex;
+  flex-direction: column;
+}
+.cartName {
+  font-size: 1.4rem;
+}
+.badge {
+  border: 0.08rem solid rgb(0, 0, 0);
+  background-color: white;
+  border-radius: 2rem;
+  padding: 0.1rem 0.4rem;
+  color: rgb(0, 0, 0);
+  font-size: 0.7rem;
+  align-self: center;
+  opacity: 100;
+  transform: translateY(40%) translateX(50%);
+}
+
+.button:hover .badge,
+.button:active .badge {
+  border-color: orange;
+  color: orange;
+}
+
+.bump {
+  animation: bump 300ms ease-out;
+}
+
+@keyframes bump {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(0.9);
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
