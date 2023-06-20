@@ -31,7 +31,7 @@ CREATE TABLE `address` (
   PRIMARY KEY (`id`),
   KEY `FKda8tuywtf0gb6sedwk7la1pgi` (`user_id`),
   CONSTRAINT `FKda8tuywtf0gb6sedwk7la1pgi` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,6 @@ CREATE TABLE `address` (
 
 LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
-INSERT INTO `address` VALUES (19,'bl12','sofiaaasdasdaaaa','1234',2),(20,'bsasdl12','rumqnasdasdadevo','12sdd34',2),(21,'bsasdl12','aaaaaaaarumqnasdasdadevo','12sdd34',2),(24,'suii','pleven','1234',5),(25,'suissi','sofian','1784',5);
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -182,7 +181,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (2,'ivan@gmail.com','123545678','admin'),(5,'sulio@gmail.com','123545678','admin');
+INSERT INTO `user` VALUES (2,'ivan@gmail.com','123545678','admin'),(5,'georgi@gmail.com','123545678','admin');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -195,4 +194,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-20  3:06:02
+-- Dump completed on 2023-06-20  3:17:43

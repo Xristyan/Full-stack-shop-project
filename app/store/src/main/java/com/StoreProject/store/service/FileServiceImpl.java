@@ -28,7 +28,7 @@ public class FileServiceImpl {
     @Autowired
     ProductsRepository productsRepository;
 
-    private final String FOLDER_PATH="C:/Users/Hristian/Desktop/react code/Store Project/01-starting-project/public/images/";
+    private final String FOLDER_PATH="C:/Users/Hristian/Desktop/Full-stack-shop-project/client/public/images/";
 
     public String uploadImageToFileSystem(int id,List<MultipartFile> files) throws IOException {
         Optional<Products> optionalProduct= productsRepository.findById(id);
