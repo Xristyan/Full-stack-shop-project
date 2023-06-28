@@ -21,10 +21,18 @@ const ProductPage = (props) => {
         </div>
         {/* <div className={classes.line}></div> */}
         <div className={classes.descriptionContainer}>
-          <p>Color: {events.color}</p>
-          <p>Description: {events.description}</p>
-          <p>Gender: {events.gender}</p>
-          <p>Product: {events.typeOfProduct}</p>
+          <h1> {events.brand.toUpperCase()}</h1>
+          <p>{events.typeOfProduct}</p>
+          <div className={classes.paragraphColor}>
+            {events.color}
+            <div
+              style={{ backgroundColor: events.color }}
+              className={classes.color}
+            ></div>
+          </div>
+          <p> {events.description}</p>
+          <p> {events.gender}</p>
+
           <div className={classes.sizes}>
             <div className={classes.square}>XS</div>
             <div className={classes.square}>S</div>

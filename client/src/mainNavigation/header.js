@@ -9,7 +9,6 @@ import DropDownChildren from "./DropDown/dropDownChildren";
 import DropDownWomen from "./DropDown/dropDownWoman";
 
 const Header = (props) => {
-  console.log(`../images/${props.data}`);
   return (
     <header className={classes.header}>
       <nav className={classes.navigation}>

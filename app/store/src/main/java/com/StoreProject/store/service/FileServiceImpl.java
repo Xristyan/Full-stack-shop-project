@@ -35,9 +35,6 @@ public class FileServiceImpl {
         Products product=optionalProduct.get();
 
 
-
-
-
         // Combine the unique identifier, timestamp, and file extension
         for(MultipartFile file : files) {
             String uniqueId = UUID.randomUUID().toString();

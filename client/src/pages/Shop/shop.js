@@ -4,7 +4,7 @@ import { useLoaderData } from "react-router-dom";
 import ShopHeading from "./shopHeading";
 const Shop = () => {
   const events = useLoaderData();
-  console.log(events);
+
   return (
     <>
       <ShopHeading />

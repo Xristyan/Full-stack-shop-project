@@ -37,15 +37,20 @@
   display: flex;
   flex-direction: column;
   align-items: left;
-  justify-content: center;
+  /* justify-content: center; */
   overflow: auto;
 }
 .descriptionContainer p {
-  margin: 0.2rem;
   margin-left: 2rem;
   font-weight: 500;
-  /* border-bottom: 0.1rem solid black; */
+  margin-top: 0.5rem;
   font-family: sans-serif;
+}
+.descriptionContainer h1 {
+  /* position: absolute; */
+  text-align: center;
+
+  /* top: 1rem; */
 }
 .descriptionContainer button {
   align-self: baseline;
@@ -58,11 +63,20 @@
   background-color: #242424;
   color: white;
 }
+.color {
+  width: 1rem;
+  padding: 0.5rem;
+}
+.paragraphColor {
+  display: flex;
+  gap: 1rem;
+  margin-left: 2rem;
+}
 .sizes {
   margin-top: 1rem;
   display: flex;
   gap: 1rem;
-  /* margin-left: 2rem; */
+
   justify-content: center;
 }
 .square {
