@@ -1,9 +1,13 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./pages/root";
 import HomePage from "./pages/HomePage/homePage";
-import Shop from "./pages/Shop/shop";
-import ProductPage from "./pages/ProductPage/productPage";
-import EventsRoot from "./pages/eventRoot";
+import Shop, { loader as itemsLoader } from "./pages/Shop/shop";
+import ProductPage, {
+  loader as itemLoader,
+} from "./pages/ProductPage/productPage";
+import ItemsRoot from "./pages/itemsRoot";
+import CategoriesRoot from "./pages/Shop/categoriesRoot";
+import Cart from "./pages/CartPage/cart";
 const router = createBrowserRouter([
   {
     path: "",
@@ -12,45 +16,32 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       {
         path: "Men",
-        element: <EventsRoot />,
+        element: <ItemsRoot />,
         children: [
           {
             index: true,
             element: <Shop />,
-            loader: async () => {
-              const response = await fetch(
-                "http://localhost:8080/product/getAll"
-              );
-              if (!response.ok) {
-                return {
-                  isError: true,
-                  errorMessage: "Could not fetch events",
-                };
-              }
-              const data = response.json();
-              return data;
-            },
+            loader: itemsLoader,
           },
           {
-            path: ":eventId",
-            element: <ProductPage />,
-            loader: async ({ params }) => {
-              const response = await fetch(
-                `http://localhost:8080/product/getProduct/${params.eventId}`
-              );
-              if (!response.ok) {
-                return {
-                  isError: true,
-                  errorMessage: "Could not fetch events",
-                };
-              }
-              const data = response.json();
-              return data;
-            },
+            path: ":Category",
+            element: <CategoriesRoot />,
+            children: [
+              {
+                index: true,
+                element: <Shop />,
+                loader: itemsLoader,
+              },
+              {
+                path: ":eventId",
+                element: <ProductPage />,
+                loader: itemLoader,
+              },
+            ],
           },
         ],
       },
-      { path: "Women", element: <Shop /> },
+      { path: "Cart", element: <Cart /> },
       { path: "/Children", element: <Shop /> },
     ],
   },

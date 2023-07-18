@@ -1,0 +1,23 @@
+.cartContainer {
+  display: flex;
+  margin: 5rem auto;
+  max-width: 60rem;
+  border-radius: 3rem;
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.26);
+}
+.summary {
+  background-color: rgb(176, 172, 172);
+  border-top-right-radius: 3rem;
+  border-bottom-right-radius: 3rem;
+  /* width: 100%; */
+  padding: 0 5rem;
+}
+@media only screen and (max-width: 900px) {
+  .cartContainer {
+    flex-direction: column;
+  }
+  .summary {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 3rem;
+  }
+}

@@ -41,11 +41,11 @@
   color: black;
   font-weight: 500;
 }
-.test {
+/* .test {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
-}
+} */
 .dropdown:hover .dropdown-content {
   opacity: 1;
   transform: translateY(0);

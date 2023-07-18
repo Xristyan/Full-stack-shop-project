@@ -4,7 +4,6 @@ import { useLoaderData } from "react-router-dom";
 import ShopHeading from "./shopHeading";
 const Shop = () => {
   const events = useLoaderData();
-
   return (
     <>
       <ShopHeading />
@@ -27,9 +26,15 @@ const Shop = () => {
   );
 };
 export default Shop;
-// export async function loader() {
-//   const response = await fetch("http://localhost:8080/product/getAll");
-//   if (!response.ok) throw new Error("sui");
-//   const data = response.json();
-//   return data;
-// }
+export async function loader({ params }) {
+  console.log(params);
+  const response = await fetch("http://localhost:8080/product/getAll");
+  if (!response.ok) {
+    return {
+      isError: true,
+      errorMessage: "Could not fetch events",
+    };
+  }
+  const data = response.json();
+  return data;
+}

@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const FormChoice = (props) => {
   const toggleForm = useSelector((state) => state.changeForm.toggleForm);
   return (
-    <Modal onClose={props.onClose}>
+    <Modal className={"authContiner"} onClose={props.onClose}>
       {toggleForm && <LoginForm />}
       {toggleForm || <RegisterForm />}
     </Modal>

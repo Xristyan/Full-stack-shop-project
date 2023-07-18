@@ -1,13 +1,16 @@
 package com.StoreProject.store.controller;
 
+import com.StoreProject.store.auth.AuthenticationRequest;
 import com.StoreProject.store.modal.Address;
-import com.StoreProject.store.modal.Student;
+import com.StoreProject.store.modal.Cart;
 import com.StoreProject.store.modal.User;
 import com.StoreProject.store.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
@@ -19,27 +22,26 @@ public class UserController {
     public List<User> getAllStudents(){
         return userService.getAllUsers();
     }
-    @PostMapping("/add")
-    public String add(@RequestBody User user)
+    @PostMapping("/getUserBy/email")
+    public User getUserByEmail(@RequestBody AuthenticationRequest request)
     {
-        userService.saveUSer(user);
-        return "New user is added";
+        return userService.getUserByEmail(request);
     }
-    @PutMapping("/update/{id}")
-    public String update(@PathVariable int id,@RequestBody User user)
-    {
-        user.setId(id);
-        userService.updateUser(user);
-        return " Student is updated";
-    }
-    @PostMapping("/{id}/address")
+
+
+    @PutMapping ("/{id}/address")
     public String updateUserAddress(
             @PathVariable int id,
             @RequestBody List<Address> updatedAddress) {
 
         userService.updateUserAddress(id, updatedAddress);
 
-        return "Author books updated successfully";
+        return "updated";
+    }
+    @PutMapping("/{id}/cart")
+    public ResponseEntity<User> updateUserCart(@PathVariable int id, @RequestBody List<Cart> updatedCart)
+    {
+        return ResponseEntity.ok(userService.updateUserCart(id,updatedCart));
     }
 
 }

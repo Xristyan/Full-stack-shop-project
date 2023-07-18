@@ -1,6 +1,6 @@
 import { Outlet, ScrollRestoration } from "react-router-dom";
 
-const EventsRoot = () => {
+const CategoriesRoot = () => {
   return (
     <>
       <ScrollRestoration />
@@ -8,4 +8,4 @@ const EventsRoot = () => {
     </>
   );
 };
-export default EventsRoot;
+export default CategoriesRoot;

@@ -7,7 +7,7 @@
 }
 .logoContainer label {
   font-weight: 700;
-  font-size: 3rem;
+  font-size: 2rem;
   letter-spacing: -2px;
 }
 .logoImg {
@@ -103,6 +103,28 @@
 .input:focus ~ .bar:before,
 .input:focus ~ .bar:after {
   width: 50%;
+}
+
+.invalid {
+  border-bottom: 2px solid #b40e0e;
+  color: #b40e0e;
+  transition: none;
+}
+
+.invalid + .bar:before,
+.invalid + .bar:after,
+.invalid:focus ~ .bar:before,
+.invalid:focus ~ .bar:after {
+  width: 0;
+}
+
+.button:disabled,
+.button:disabled:active,
+.button:disabled:hover {
+  background-color: #ccc;
+  color: #3f3f3f;
+  border-color: #ccc;
+  cursor: not-allowed;
 }
 
 .highlight {

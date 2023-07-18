@@ -1,5 +1,5 @@
 import classes from "./dropDown.module.css";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import NikeIcon from "../../Icons/BrandIcons/nikeIcon";
 import AdidasIcon from "../../Icons/BrandIcons/adidasIcon";
 import PumaIcon from "../../Icons/BrandIcons/pumaIcon";
@@ -8,7 +8,7 @@ const DropDown = () => {
     <div className={classes.dropdown}>
       <NavLink
         className={({ isActive }) => (isActive ? classes.active : undefined)}
-        to="Men"
+        to="Men/All"
         end
       >
         Men
@@ -16,7 +16,7 @@ const DropDown = () => {
       <div className={classes["dropdown-content"]}>
         <div className={classes.dropdownCategory}>
           <span>Cloathing</span>
-          <a href="#">All Clothing</a>
+          <Link to="Men/All">All Clothing</Link>
           <a href="#">Jeans</a>
           <a href="#">Trousers</a>
           <a href="#">Jackets</a>

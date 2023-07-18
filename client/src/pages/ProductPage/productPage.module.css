@@ -5,12 +5,14 @@
   display: flex;
 }
 .imageContainer {
+  width: 25rem;
   max-width: 100%;
 }
 
 .productInfoContainer {
   /* border: 2px solid orange; */
-  max-width: 25rem;
+  width: 25rem;
+  max-width: 100%;
   border-right: 0.1rem solid #242424;
 }
 .image {
@@ -107,5 +109,34 @@
   }
   .descriptionContainer p {
     font-size: 1.1rem;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .productContainer {
+    max-width: 37rem;
+    height: 31rem;
+  }
+  .productInfoContainer {
+    max-width: 20rem;
+  }
+  .line {
+    height: 22rem;
+    border: 0.1rem solid #242424;
+  }
+
+  .productContainer p {
+    font-size: 1.5rem;
+  }
+  .descriptionContainer button {
+    font-size: 1.9rem;
+    padding: 1.99rem 0;
+  }
+  .descriptionContainer p {
+    font-size: 1.1rem;
+  }
+}
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 8.5px;
   }
 }

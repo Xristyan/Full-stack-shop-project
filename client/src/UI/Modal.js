@@ -6,7 +6,7 @@ const BackDrop = (props) => {
 };
 const ModalOverlay = (props) => {
   return (
-    <div className={classes.modal}>
+    <div className={`${classes.modal} ${classes[props.className]}`}>
       <div className={classes.content}>{props.children}</div>
     </div>
   );
@@ -20,7 +20,9 @@ const Modal = (props) => {
         portalElemetn
       )}
       {ReactDOM.createPortal(
-        <ModalOverlay>{props.children}</ModalOverlay>,
+        <ModalOverlay className={props.className}>
+          {props.children}
+        </ModalOverlay>,
         portalElemetn
       )}
     </React.Fragment>

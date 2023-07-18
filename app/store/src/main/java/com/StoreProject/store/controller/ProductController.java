@@ -36,7 +36,7 @@ public class ProductController {
     public String add(@RequestBody Products products)
     {
        productService.saveProduct(products);
-        return "New user is added";
+        return "New product is added";
     }
 
 @GetMapping("/getAll")

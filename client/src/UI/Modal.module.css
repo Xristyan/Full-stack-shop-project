@@ -17,11 +17,13 @@
   padding: 1rem;
   border-radius: 14px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  z-index: 30;
+  z-index: 1001;
   animation: slide-down 300ms ease-out forwards;
   border: 0.3rem solid rgb(198, 190, 190);
 }
-
+.authContiner {
+  height: 38rem;
+}
 @media (min-width: 768px) {
   .modal {
     width: 30rem;
