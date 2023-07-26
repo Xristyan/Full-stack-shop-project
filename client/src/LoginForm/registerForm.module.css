@@ -114,7 +114,27 @@
   pointer-events: none;
   opacity: 0.5;
 }
+.invalid {
+  border-bottom: 2px solid #b40e0e;
+  color: #b40e0e;
+  transition: none;
+}
 
+.invalid + .bar:before,
+.invalid + .bar:after,
+.invalid:focus ~ .bar:before,
+.invalid:focus ~ .bar:after {
+  width: 0;
+}
+
+.button:disabled,
+.button:disabled:active,
+.button:disabled:hover {
+  background-color: #ccc;
+  color: #3f3f3f;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
 .input:focus ~ .highlight {
   animation: inputHighlighter 0.3s ease;
 }

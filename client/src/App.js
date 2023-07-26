@@ -8,6 +8,7 @@ import ProductPage, {
 import ItemsRoot from "./pages/itemsRoot";
 import CategoriesRoot from "./pages/Shop/categoriesRoot";
 import Cart from "./pages/CartPage/cart";
+import jwtDecode from "jwt-decode";
 const router = createBrowserRouter([
   {
     path: "",
@@ -47,6 +48,7 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
+  // console.log(jwtDecode(localStorage.getItem("jwtToken")));
   return <RouterProvider router={router} />;
 }
 

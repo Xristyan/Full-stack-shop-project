@@ -16,9 +16,9 @@ const ProfileButton = () => {
     dispatch(showFormActions.showForm());
   };
   const logout = () => {
-    dispatch(userActions.clearUser);
+    dispatch(userActions.clearUser());
     dispatch(loginConfigActions.login(false));
-    localStorage.setItem("jwtToken", null);
+    localStorage.removeItem("jwtToken");
   };
   return (
     <>

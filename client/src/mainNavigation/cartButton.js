@@ -8,15 +8,15 @@ import { Link } from "react-router-dom";
 const CartButton = (props) => {
   const [itemsCount, setItemsCount] = useState(0);
   let opacity;
-  const itemsInCart = useSelector((state) => state.user.user);
+  const itemsInCart = useSelector((state) => state.user.cart);
   const isLogged = useSelector((state) => state.loginConfig.loggedIn);
   useEffect(() => {
-    if (!itemsInCart.cart) {
+    if (!itemsInCart) {
+      opacity = { opacity: 0 };
       setItemsCount(0);
       return;
     }
-
-    const count = itemsInCart.cart
+    const count = itemsInCart
       .map((item) => {
         return item.quantity;
       })
@@ -26,7 +26,7 @@ const CartButton = (props) => {
     console.log(count);
     setItemsCount(count);
   }, [itemsInCart]);
-  if (isLogged) {
+  if (isLogged && itemsInCart.length !== 0) {
     opacity = { opacity: 1 };
   } else {
     opacity = { opacity: 0 };

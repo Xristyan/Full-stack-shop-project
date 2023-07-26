@@ -2,8 +2,27 @@ import { useLoaderData, useParams } from "react-router-dom";
 import classes from "./productPage.module.css";
 import Carousel from "react-multi-carousel";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { userActions } from "../../Store/user";
+import { useSelector } from "react-redux";
+import { loginConfigActions } from "../../Store/loginConfig";
 const ProductPage = (props) => {
+  const dispatch = useDispatch();
   const events = useLoaderData();
+  const user = useSelector((state) => state.user.user);
+  const isLogged = useSelector((state) => state.loginConfig.loggedIn);
+  // console.log(events.images[0].name);
+  const addtoCart = () => {
+    if (!isLogged || !user.id) return;
+    dispatch(
+      userActions.addtoCart({
+        productId: events.id,
+        productName: events.name,
+        imageName: events.images[0].name,
+        price: events.price,
+      })
+    );
+  };
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -27,7 +46,6 @@ const ProductPage = (props) => {
       partialVisibilityGutter: 40,
     },
   };
-  console.log(events);
   return (
     <>
       <section className={classes.productContainer}>
@@ -75,7 +93,9 @@ const ProductPage = (props) => {
             <div className={classes.square}>M</div>
             <div className={classes.square}>L</div>
           </div>
-          <button>Add to Cart</button>
+          <button className={classes.button} onClick={addtoCart}>
+            Add to Cart
+          </button>
         </div>
       </section>
     </>

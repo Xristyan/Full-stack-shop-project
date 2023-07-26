@@ -18,6 +18,7 @@
 }
 .details {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 1rem;
 }
@@ -36,17 +37,52 @@
   gap: 0.3rem;
   align-items: center;
 }
-.actions button {
+/* .actions button {
   background: none;
   width: 2rem;
-  border: 1px solid #777171;
+  border: 1px solid rgb(255, 255, 255);
   display: flex;
   justify-content: center;
-}
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  background-color: #242424;
+} */
 
 .removeButton {
   background: none;
   border: none;
   justify-self: end;
   margin-right: 2rem;
+}
+.quantityButton {
+  background: none;
+  width: 2rem;
+  border: 1px solid rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  /* color: rgb(255, 255, 255); */
+  font-weight: 700;
+  /* background-color: #242424; */
+}
+.quantityButton:hover {
+  color: orange;
+  border: 1px solid orange;
+  transition: all 0.2s;
+  /* background-color: #242424; */
+}
+.removeButton:hover {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: orange;
+  margin-right: 1.87rem;
+  transition: all 0.1s;
+}
+@media screen and (max-width: 600px) {
+  .details {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .details p {
+    margin: 0;
+  }
 }

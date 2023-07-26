@@ -64,10 +64,15 @@
   border: none;
   background-color: #242424;
   color: white;
+  cursor: pointer;
+}
+.descriptionContainer button:hover {
+  background-color: #3b3939;
 }
 .color {
   width: 1rem;
   padding: 0.5rem;
+  border: 1px solid black;
 }
 .paragraphColor {
   display: flex;

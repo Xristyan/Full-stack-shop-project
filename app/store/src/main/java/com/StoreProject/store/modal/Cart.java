@@ -18,6 +18,7 @@ public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private int productId;
     private String productName;
     private String imageName;
     private float price;
