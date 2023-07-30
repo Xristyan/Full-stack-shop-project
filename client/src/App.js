@@ -9,6 +9,8 @@ import ItemsRoot from "./pages/itemsRoot";
 import CategoriesRoot from "./pages/Shop/categoriesRoot";
 import Cart from "./pages/CartPage/cart";
 import jwtDecode from "jwt-decode";
+import UploadProductPage from "./pages/UploadProductPage/uploadProductPage";
+
 const router = createBrowserRouter([
   {
     path: "",
@@ -43,6 +45,7 @@ const router = createBrowserRouter([
         ],
       },
       { path: "Cart", element: <Cart /> },
+      { path: "Upload", element: <UploadProductPage /> },
       { path: "/Children", element: <Shop /> },
     ],
   },

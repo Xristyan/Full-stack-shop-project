@@ -4,7 +4,7 @@ import classes from "./cartButton.module.css";
 import { userActions } from "../Store/user";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 const CartButton = (props) => {
   const [itemsCount, setItemsCount] = useState(0);
   let opacity;
@@ -23,7 +23,6 @@ const CartButton = (props) => {
       .reduce((acc, curr) => {
         return acc + curr;
       }, 0);
-    console.log(count);
     setItemsCount(count);
   }, [itemsInCart]);
   if (isLogged && itemsInCart.length !== 0) {
@@ -32,7 +31,12 @@ const CartButton = (props) => {
     opacity = { opacity: 0 };
   }
   return (
-    <Link to="Cart" className={classes.button}>
+    <NavLink
+      className={({ isActive }) =>
+        [classes.button, isActive ? classes.active : null].join(" ")
+      }
+      to="Cart"
+    >
       <span className={classes.amount}>
         <span style={opacity} className={classes.badge}>
           {isLogged ? itemsCount : 0}
@@ -41,7 +45,7 @@ const CartButton = (props) => {
       </span>
 
       <span className={classes.cartName}>Cart</span>
-    </Link>
+    </NavLink>
   );
 };
 export default CartButton;

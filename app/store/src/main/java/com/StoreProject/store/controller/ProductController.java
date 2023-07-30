@@ -25,9 +25,10 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 //
-    @PostMapping("/{id}/add")
-    public ResponseEntity<?> uploadImageToFIleSystem( @PathVariable int id,@RequestParam("image") List<MultipartFile>file) throws IOException {
-        String uploadImage = service.uploadImageToFileSystem(id,file);
+    @CrossOrigin
+    @PostMapping("/add")
+    public ResponseEntity<?> uploadImageToFIleSystem(@RequestParam("product") String product,@RequestParam("image") List<MultipartFile>file) throws IOException {
+        String uploadImage = service.uploadImageToFileSystem(product,file);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(uploadImage);
     }

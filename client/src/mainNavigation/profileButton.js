@@ -9,7 +9,6 @@ import { useSelector } from "react-redux";
 
 const ProfileButton = () => {
   const loggedIn = useSelector((state) => state.loginConfig.loggedIn);
-  console.log(loggedIn);
   const dispatch = useDispatch();
   const showFormHandler = () => {
     if (loggedIn) return;

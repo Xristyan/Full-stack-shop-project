@@ -38,7 +38,6 @@ const LoginForm = (props) => {
   const { isLoading, error, requestHandler } = useHttp();
   const setJwtToken = (data) => {
     if (!data) return;
-    console.log("sada");
     dispatch(loginConfigActions.login(true));
     localStorage.setItem("jwtToken", data.token);
     requestHandler(
@@ -94,7 +93,7 @@ const LoginForm = (props) => {
             onChange={emailChangeHandler}
             onBlur={emailOnBlurHandler}
             required=""
-            type="text"
+            type="email"
             className={`${classes.input} ${
               classes[emailHasError ? "invalid" : ""]
             }`}

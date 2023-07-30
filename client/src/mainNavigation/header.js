@@ -7,7 +7,7 @@ import logo from "../Icons/logo.png";
 import DropDown from "./DropDown/dropDown";
 import DropDownChildren from "./DropDown/dropDownChildren";
 import DropDownWomen from "./DropDown/dropDownWoman";
-
+import UploadItemButton from "./UploadItemButton";
 const Header = (props) => {
   return (
     <header className={classes.header}>
@@ -36,6 +36,7 @@ const Header = (props) => {
           </li>
         </ul>
         <div className={classes.buttonContainer}>
+          <UploadItemButton />
           <ProfileButton />
           <QuestionButton />
           <CartButton />

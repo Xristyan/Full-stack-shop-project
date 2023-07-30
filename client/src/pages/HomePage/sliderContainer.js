@@ -41,17 +41,6 @@ const SliderContainer = () => {
           />
           <h2>Sneakers</h2>
           <p className={classes.price}>20</p>
-          <p>sdasdadasdasdada</p>
-          <button>add to cart</button>
-        </div>
-        <div className={classes.card}>
-          <img
-            className={classes["product--image"]}
-            src="https://www.highsnobiety.com/static-assets/thumbor/Vd6_JucyK0bFkkAKdLTcZ_XtTVo=/1600x1067/www.highsnobiety.com/static-assets/wp-content/uploads/2019/09/04164648/custom-sneakers-good-bad-ugly-main.jpg"
-          />
-          <h2>Sneakers</h2>
-          <p className={classes.price}>20</p>
-          <p>sdasdadasdasdada</p>
 
           <button>add to cart</button>
         </div>
@@ -62,7 +51,6 @@ const SliderContainer = () => {
           />
           <h2>Sneakers</h2>
           <p className={classes.price}>20</p>
-          <p>sdasdadasdasdada</p>
 
           <button>add to cart</button>
         </div>
@@ -73,7 +61,6 @@ const SliderContainer = () => {
           />
           <h2>Sneakers</h2>
           <p className={classes.price}>20</p>
-          <p>sdasdadasdasdada</p>
 
           <button>add to cart</button>
         </div>
@@ -84,7 +71,6 @@ const SliderContainer = () => {
           />
           <h2>Sneakers</h2>
           <p className={classes.price}>20</p>
-          <p>sdasdadasdasdada</p>
 
           <button>add to cart</button>
         </div>
@@ -95,7 +81,6 @@ const SliderContainer = () => {
           />
           <h2>Sneakers</h2>
           <p className={classes.price}>20</p>
-          <p>sdasdadasdasdada</p>
 
           <button>add to cart</button>
         </div>
@@ -106,7 +91,6 @@ const SliderContainer = () => {
           />
           <h2>Sneakers</h2>
           <p className={classes.price}>20</p>
-          <p>sdasdadasdasdada</p>
 
           <button>add to cart</button>
         </div>
@@ -117,7 +101,16 @@ const SliderContainer = () => {
           />
           <h2>Sneakers</h2>
           <p className={classes.price}>20</p>
-          <p>sdasdadasdasdada</p>
+
+          <button>add to cart</button>
+        </div>
+        <div className={classes.card}>
+          <img
+            className={classes["product--image"]}
+            src="https://www.highsnobiety.com/static-assets/thumbor/Vd6_JucyK0bFkkAKdLTcZ_XtTVo=/1600x1067/www.highsnobiety.com/static-assets/wp-content/uploads/2019/09/04164648/custom-sneakers-good-bad-ugly-main.jpg"
+          />
+          <h2>Sneakers</h2>
+          <p className={classes.price}>20</p>
 
           <button>add to cart</button>
         </div>

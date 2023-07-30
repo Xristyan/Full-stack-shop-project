@@ -3,7 +3,7 @@ import classes from "./productElement.module.css";
 const ProductElement = (props) => {
   return (
     <>
-      <Link to={"" + props.id} className={classes.logo}>
+      <Link to={"" + props.id} className={classes.item}>
         <div className={classes.imageContainer}>
           <img className={classes.image} src={`/images/${props.image}`} />
         </div>

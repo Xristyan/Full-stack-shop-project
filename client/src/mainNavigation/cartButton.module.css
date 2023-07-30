@@ -11,7 +11,7 @@
   text-decoration: none;
 }
 .button:hover,
-.button:active {
+.button.active {
   color: orange;
 }
 
@@ -38,7 +38,7 @@
 }
 
 .button:hover .badge,
-.button:active .badge {
+.button.active .badge {
   border-color: orange;
   color: orange;
 }

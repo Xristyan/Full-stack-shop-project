@@ -105,7 +105,7 @@ const RegisterForm = (props) => {
             onBlur={emailOnBlurHandler}
             value={enteredEmail}
             required=""
-            type="text"
+            type="email"
             className={`${classes.input} ${
               classes[emailHasError ? "invalid" : ""]
             }`}

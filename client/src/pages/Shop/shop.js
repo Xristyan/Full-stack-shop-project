@@ -27,7 +27,6 @@ const Shop = () => {
 };
 export default Shop;
 export async function loader({ params }) {
-  console.log(params);
   const response = await fetch("http://localhost:8080/product/getAll");
   if (!response.ok) {
     return {
