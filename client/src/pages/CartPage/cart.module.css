@@ -1,5 +1,6 @@
 .cartContainer {
   display: flex;
+  justify-content: center;
   margin: 5rem auto;
   max-width: 60rem;
   border-radius: 3rem;
@@ -12,6 +13,11 @@
   /* width: 100%; */
   padding: 0 5rem;
 }
+/* .itemsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
 @media only screen and (max-width: 900px) {
   .cartContainer {
     flex-direction: column;

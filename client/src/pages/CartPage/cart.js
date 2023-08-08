@@ -6,7 +6,7 @@ const Cart = () => {
 
   return (
     <section className={classes.cartContainer}>
-      <div>
+      <div className={classes.itemsContainer}>
         {cart.length !== 0 ? (
           cart.map((item) => {
             return (
@@ -22,12 +22,14 @@ const Cart = () => {
             );
           })
         ) : (
-          <p>Cart is empty</p>
+          <p className={classes.empty}>Cart is empty</p>
         )}
       </div>
-      <div className={classes.summary}>
-        <p>Summary</p>
-      </div>
+      {cart.length !== 0 && (
+        <div className={classes.summary}>
+          <p>Summary</p>
+        </div>
+      )}
     </section>
   );
 };

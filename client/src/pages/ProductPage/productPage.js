@@ -78,14 +78,15 @@ const ProductPage = (props) => {
           <h1> {events.brand.toUpperCase()}</h1>
           <p>{events.typeOfProduct}</p>
           <div className={classes.paragraphColor}>
-            {events.color}
+            Color: {events.color}
             <div
               style={{ backgroundColor: events.color }}
               className={classes.color}
             ></div>
           </div>
-          <p> {events.description}</p>
-          <p> {events.gender}</p>
+          <p>Description: {events.description}</p>
+          <p>Gender: {events.gender}</p>
+          <p>Material: {events.material}</p>
 
           <div className={classes.sizes}>
             <div className={classes.square}>XS</div>

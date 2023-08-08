@@ -143,6 +143,9 @@
   .image {
     height: 25rem;
   }
+  .descriptionContainer h1 {
+    margin: 1rem;
+  }
 }
 @media only screen and (max-width: 600px) {
   html {
