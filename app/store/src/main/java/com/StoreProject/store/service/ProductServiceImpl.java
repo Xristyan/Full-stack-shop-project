@@ -1,5 +1,6 @@
 package com.StoreProject.store.service;
 
+import com.StoreProject.store.Exception.NotFoundException;
 import com.StoreProject.store.modal.Products;
 import com.StoreProject.store.modal.User;
 import com.StoreProject.store.repository.ProductsRepository;
@@ -32,8 +33,9 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public Products getProduct(int id) {
         Optional<Products> optionalProducts = productsRepository.findById(id);
-        Products products=optionalProducts.get();
-        return products;
+        Products product=optionalProducts.orElseThrow(() -> new NotFoundException("Product with ID " + id + " not found"));
+
+        return product;
     }
 
 
