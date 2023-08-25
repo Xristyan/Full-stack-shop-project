@@ -1,29 +1,54 @@
 .input {
-  max-width: 20rem;
-  width: 20rem;
+  width: 100%;
+  height: 100%;
   border: none;
   padding: 1rem;
   border-radius: 1rem;
+  border: 2px solid #e8e8e8;
   background: #e8e8e8;
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.26);
   transition: 0.3s;
+  z-index: 0;
 }
 
 .input:focus {
-  outline-color: #e8e8e8;
+  outline: none;
   background: #e8e8e8;
   box-shadow: inset 20px 20px 60px #c5c5c5, inset -20px -20px 60px #ffffff;
   transition: 0.3s;
 }
-.detailsForm {
-  gap: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+
+.invalid {
+  border: 2px solid #b40e0e;
+  color: #b40e0e;
 }
+.inputContainer {
+  position: relative;
+}
+
+.detailsForm {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 4px;
+  grid-row-gap: 4px;
+}
+
+.inputName {
+  position: relative;
+  grid-area: 1 / 1 / 2 / 3;
+}
+
 .description {
+  width: 100%;
+  height: 100%;
   background: #e8e8e8;
+}
+.descriptionContainer {
+  position: relative;
+  background: #e8e8e8;
+  z-index: 0;
+  grid-area: 2 / 2 / 4 / 4;
 }
 .description:focus {
   outline-color: #e8e8e8;
@@ -38,7 +63,8 @@
 
 .checkboxContainer {
   display: flex;
-  gap: 1rem;
+  justify-content: center;
+  gap: 0.5rem;
   position: relative;
   cursor: pointer;
   font-size: 20px;
@@ -91,8 +117,9 @@
   transform: rotate(45deg);
 }
 .submitButton {
+  grid-area: 5 / 2 / 6 / 3;
   margin-bottom: 2rem;
-  padding: 17px 40px;
+  padding: 1rem 1.5rem;
   border-radius: 10px;
   border: 0;
   background-color: rgb(255, 56, 86);
@@ -113,4 +140,17 @@
   box-shadow: rgb(201, 46, 70) 0px 0px 0px 0px;
   transform: translateY(5px);
   transition: 200ms;
+}
+
+@media only screen and (max-width: 600px) {
+  .detailsForm {
+    grid-template-columns: repeat(2, 15rem);
+    grid-template-rows: repeat(4, 5rem) 1fr;
+  }
+  .inputName {
+    grid-area: auto;
+  }
+  .descriptionContainer {
+    grid-area: 3 / 1 / 5 / 2;
+  }
 }

@@ -5,6 +5,7 @@
   overflow: hidden;
   text-decoration: none;
   color: #242424;
+  background-color: white;
 }
 .item img {
   aspect-ratio: 1/1.25;

@@ -1,0 +1,46 @@
+.popUpButton {
+  font-size: 1.2rem;
+  position: absolute;
+  top: 0.2rem;
+  right: 0.5rem;
+  color: #b40e0e;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.popUp {
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  display: none;
+  background-color: rgb(24, 24, 24, 0.9);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+  padding: 0.5rem 2rem;
+  position: absolute;
+  bottom: 0.8rem;
+  left: -2.3rem;
+  cursor: auto;
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 75%,
+    50% 75%,
+    29% 100%,
+    31% 75%,
+    0% 75%
+  );
+  transition: opacity 1s;
+}
+.popUp p {
+  color: rgb(219, 219, 219);
+  margin: 0;
+  margin-bottom: 1rem;
+}
+.popUpButton:hover .popUp {
+  font-family: sans-serif;
+  display: flex;
+  opacity: 1;
+}

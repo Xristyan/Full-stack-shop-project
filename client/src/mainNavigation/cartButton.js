@@ -43,8 +43,6 @@ const CartButton = (props) => {
         </span>
         <CartIcon />
       </span>
-
-      <span className={classes.cartName}>Cart</span>
     </NavLink>
   );
 };

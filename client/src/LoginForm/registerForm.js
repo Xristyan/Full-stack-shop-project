@@ -1,4 +1,4 @@
-import classes from "./registerForm.module.css";
+import classes from "./loginForm.module.css";
 import logo from "../Icons/logo.png";
 import { changeFormActions } from "../Store/changeForm";
 import { useDispatch } from "react-redux";
@@ -94,6 +94,7 @@ const RegisterForm = (props) => {
   };
   return (
     <>
+      {error && <span className={classes.errorTopMessage}>{error}</span>}
       <div className={classes.logoContainer}>
         <label>Register</label>
         <img className={classes.logoImg} src={logo} alt="" />
@@ -112,7 +113,11 @@ const RegisterForm = (props) => {
             placeholder="Email"
           />
           <span className={classes.bar}></span>
+          {emailHasError && (
+            <p className={classes.errorMessage}>*Email is not valid</p>
+          )}
         </div>
+
         <div className={classes.group}>
           <input
             required=""
@@ -128,6 +133,16 @@ const RegisterForm = (props) => {
             onBlur={passwordOnBlurHandler}
           />
           <span className={classes.bar}></span>
+          {passwordHasError && enteredPassword.length < 5 && (
+            <p className={classes.errorMessage}>
+              *Password must be at least 5 chartacters long
+            </p>
+          )}
+          {passwordHasError && !/[a-zA-Z]/.test(enteredPassword) && (
+            <p className={classes.errorMessage}>
+              *Password must have at least 1 chartacters
+            </p>
+          )}
         </div>
         <div className={classes.group}>
           <input
@@ -142,6 +157,11 @@ const RegisterForm = (props) => {
             onBlur={repeatedPasswordOnBlurHandler}
           />
           <span className={classes.bar}></span>
+          {repeatedPasswordHasError && (
+            <p className={classes.errorMessage}>
+              *Passwords must match and to be valid
+            </p>
+          )}
         </div>
         <button
           disabled={!formValid}

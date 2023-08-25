@@ -82,8 +82,3 @@
   border: none;
   box-shadow: 1px 1px 10px rgb(209, 202, 202);
 }
-@media only screen and (max-width: 600px) {
-  html {
-    font-size: 8.5px;
-  }
-}

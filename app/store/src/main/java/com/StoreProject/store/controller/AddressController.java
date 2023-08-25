@@ -1,4 +1,4 @@
-package com.StoreProject.store.Exception.controller;
+package com.StoreProject.store.controller;
 
 import com.StoreProject.store.modal.Address;
 import com.StoreProject.store.service.AddressService;

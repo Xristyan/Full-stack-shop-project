@@ -8,12 +8,11 @@
 .logoContainer label {
   font-weight: 700;
   font-size: 2rem;
-  letter-spacing: -2px;
 }
 .logoImg {
   margin-top: 1rem;
-  height: 8rem;
-  width: 8rem;
+  height: 5rem;
+  width: 5rem;
 }
 .logoContainer {
   display: flex;
@@ -107,7 +106,7 @@
 
 .invalid {
   border-bottom: 2px solid #b40e0e;
-  color: #b40e0e;
+
   transition: none;
 }
 
@@ -140,7 +139,20 @@
 .input:focus ~ .highlight {
   animation: inputHighlighter 0.3s ease;
 }
-
+.errorMessage {
+  margin: 0.5rem 0 0 0;
+  max-width: 13rem;
+  color: #b40e0e;
+  align-self: start;
+}
+.errorTopMessage {
+  display: flex;
+  justify-content: center;
+  background-color: #febebe;
+  padding: 0.3rem 0;
+  margin-bottom: 0.5rem;
+  color: #b40e0e;
+}
 @keyframes inputHighlighter {
   from {
     background: #5264ae;

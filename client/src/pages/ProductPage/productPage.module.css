@@ -16,8 +16,8 @@
   border-right: 0.1rem solid #242424;
 }
 .image {
+  aspect-ratio: 1/1.25;
   width: 100%;
-  height: 30rem;
   object-fit: cover;
 }
 .productInfo {
@@ -145,10 +145,5 @@
   }
   .descriptionContainer h1 {
     margin: 1rem;
-  }
-}
-@media only screen and (max-width: 600px) {
-  html {
-    font-size: 8.5px;
   }
 }

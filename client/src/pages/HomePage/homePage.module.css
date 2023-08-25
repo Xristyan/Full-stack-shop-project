@@ -1,5 +1,4 @@
 .mainContainer {
-  max-width: 80rem;
   margin: 2rem auto;
   backdrop-filter: blur(1.5rem);
   background-color: rgba(118, 127, 127, 0.2);
@@ -22,7 +21,6 @@
 
 .logo {
   max-width: 18.75rem;
-  /* padding: 0 9rem; */
   border: 3px solid rgb(255, 180, 4);
   height: 26rem;
   display: flex;
@@ -31,38 +29,7 @@
   overflow: hidden;
   font-family: system-ui;
 }
-.logo:hover {
-  transform: translateY(-0.5rem);
-  transition: all 0.3s;
-}
 .image {
-  max-width: 18.75rem;
   height: 26rem;
   object-fit: fill;
-}
-.backgroundDesignTop {
-  position: absolute;
-  background-color: #242424;
-  width: 120%;
-  height: 55%;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-}
-.backgroundDesignBot {
-  position: absolute;
-  background-color: rgb(248, 144, 58);
-  width: 120%;
-  height: 55%;
-  top: 45%;
-  left: 0;
-  z-index: -1;
-  clip-path: polygon(0 17%, 100% 0, 100% 100%, 0 100%);
-}
-
-@media only screen and (max-width: 600px) {
-  html {
-    font-size: 10px;
-  }
 }

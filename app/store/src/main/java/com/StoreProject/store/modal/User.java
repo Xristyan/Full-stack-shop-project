@@ -1,6 +1,9 @@
 package com.StoreProject.store.modal;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,8 +24,11 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  int id;
+    @Email
     @Column(unique = true)
     private String email;
+    @NotBlank
+    @Size(min = 5)
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;

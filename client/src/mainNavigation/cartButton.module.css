@@ -1,4 +1,5 @@
 .button {
+  position: relative;
   background-color: transparent;
   border: none;
   color: white;
@@ -20,12 +21,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
 }
-.cartName {
-  font-size: 1.4rem;
-}
+
 .badge {
+  position: absolute;
   border: 0.08rem solid rgb(0, 0, 0);
   background-color: white;
   border-radius: 2rem;
@@ -34,7 +33,9 @@
   font-size: 0.7rem;
   align-self: center;
   opacity: 0;
-  transform: translateY(40%) translateX(50%);
+  top: -0.5rem;
+  right: -0.2rem;
+  /* transform: translateY(40%) translateX(50%); */
 }
 
 .button:hover .badge,

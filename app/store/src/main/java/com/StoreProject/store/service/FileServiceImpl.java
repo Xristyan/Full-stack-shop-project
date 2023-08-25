@@ -25,8 +25,6 @@ public class FileServiceImpl {
 
 
     @Autowired
-    private FileDataRepository fileDataRepository;
-    @Autowired
     ProductsRepository productsRepository;
 
     private final String FOLDER_PATH="C:/Users/Hristian/Desktop/Full-stack-shop-project/client/public/images/";
@@ -43,14 +41,13 @@ public class FileServiceImpl {
             String filePath = FOLDER_PATH + formattedName;
 
 
-            FileData fileData = fileDataRepository.save(FileData.builder()
+            FileData fileData = FileData.builder()
                     .name( formattedName)
                     .type(file.getContentType())
                     .filePath(filePath)
-                    .build());
+                    .build();
 
 
-//            product.getImages().add(fileData);
             fileDataList.add(fileData);
 
             file.transferTo(new File(filePath));

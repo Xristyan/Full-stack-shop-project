@@ -1,4 +1,4 @@
-package com.StoreProject.store.Exception.controller;
+package com.StoreProject.store.controller;
 
 import com.StoreProject.store.auth.AuthenticationRequest;
 import com.StoreProject.store.modal.Address;
@@ -18,16 +18,11 @@ import java.util.Optional;
 public class UserController {
     @Autowired
     private UserService userService;
-    @GetMapping("/getAll")
-    public List<User> getAllStudents(){
-        return userService.getAllUsers();
-    }
     @PostMapping("/getUserBy/email")
     public User getUserByEmail(@RequestBody AuthenticationRequest request)
     {
         return userService.getUserByEmail(request);
     }
-
 
     @PutMapping ("/{id}/address")
     public String updateUserAddress(

@@ -77,7 +77,7 @@
   margin-right: 1.87rem;
   transition: all 0.1s;
 }
-@media screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
   .details {
     flex-direction: column;
     justify-content: center;

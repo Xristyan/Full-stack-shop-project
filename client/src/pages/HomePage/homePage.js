@@ -12,8 +12,6 @@ const HomePage = () => {
     <>
       <Heading />
       <div className={classes.mainContainer}>
-        <div className={classes.backgroundDesignTop}></div>
-        <div className={classes.backgroundDesignBot}></div>
         <div className={classes.cardContainer}>
           <div className={classes.logo}>
             <Link to="/Men">

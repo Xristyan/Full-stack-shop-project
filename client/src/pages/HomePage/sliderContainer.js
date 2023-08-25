@@ -30,7 +30,8 @@ const SliderContainer = () => {
       <Carousel
         transitionDuration={500}
         draggable={true}
-        showDots={true}
+        showDots={false}
+        infinite={true}
         className={classes.container}
         responsive={responsive}
       >

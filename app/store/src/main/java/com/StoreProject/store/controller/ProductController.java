@@ -1,8 +1,9 @@
-package com.StoreProject.store.Exception.controller;
+package com.StoreProject.store.controller;
 
 import com.StoreProject.store.modal.Products;
 import com.StoreProject.store.service.FileServiceImpl;
 import com.StoreProject.store.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
@@ -34,7 +35,7 @@ public class ProductController {
     }
 
     @PostMapping("/addProduct")
-    public String add(@RequestBody Products products)
+    public String add(@Valid @RequestBody Products products)
     {
        productService.saveProduct(products);
         return "New product is added";

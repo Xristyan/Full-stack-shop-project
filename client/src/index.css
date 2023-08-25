@@ -13,3 +13,10 @@ img {
   max-width: 100%;
   display: block;
 }
+body {
+  margin: 0;
+  background-image: url("C:\Users\Hristian\Desktop\Full-stack-shop-project\client\src\images\background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}

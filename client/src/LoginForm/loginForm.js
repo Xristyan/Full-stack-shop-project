@@ -83,6 +83,7 @@ const LoginForm = (props) => {
   };
   return (
     <>
+      {error && <span className={classes.errorTopMessage}>{error}</span>}
       <div className={classes.logoContainer}>
         <label>Login</label>
         <img className={classes.logoImg} src={logo} alt="" />
@@ -101,6 +102,9 @@ const LoginForm = (props) => {
             value={enteredEmail}
           />
           <span className={classes.bar}></span>
+          {emailHasError && (
+            <p className={classes.errorMessage}>*Email is not valid</p>
+          )}
         </div>
         <div className={classes.group}>
           <input
@@ -115,6 +119,9 @@ const LoginForm = (props) => {
             onBlur={passwordOnBlurHandler}
           />
           <span className={classes.bar}></span>
+          {passwordHasError && (
+            <p className={classes.errorMessage}>*Please enter valis password</p>
+          )}
         </div>
         <button
           disabled={!formValid}
