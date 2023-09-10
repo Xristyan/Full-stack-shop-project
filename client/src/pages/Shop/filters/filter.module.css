@@ -1,0 +1,64 @@
+.filterContainer {
+  padding: 1rem 1rem 0 1rem;
+  width: 260px;
+  height: 95vh;
+  overflow: auto;
+  background-color: #242424;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-family: sans-serif;
+  transition: margin-left 300ms ease-in-out, visibility 300ms;
+  /* border-top-right-radius: 1rem; */
+  border-top: 1px solid white;
+}
+.active {
+  position: sticky;
+  z-index: 9;
+  top: 4rem;
+
+  visibility: visible;
+}
+.unActive {
+  margin-left: -270px;
+  visibility: hidden;
+}
+.modalFilter {
+  width: 100%;
+  background-color: white;
+  color: #242424;
+}
+.filterContainer.modalFilter .filterSection {
+  color: #242424;
+}
+.filterContainer::-webkit-scrollbar {
+  width: 8px;
+}
+.filters {
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: baseline;
+}
+.filterContainer::-webkit-scrollbar-thumb {
+  background-color: #999;
+  border-radius: 4px;
+}
+.filterSection {
+  color: rgb(215, 214, 214);
+  border-bottom: 1px solid rgb(128, 127, 127);
+}
+.filterSection h2 {
+  padding-left: 1rem;
+  cursor: pointer;
+  font-size: 14px;
+}
+.filterSection h2 span {
+  font-size: 1rem;
+  margin-left: 1rem;
+}
+/* @media screen and (max-width: 1000px) {
+  .filterContainer {
+    height: 80vh;
+  }
+} */

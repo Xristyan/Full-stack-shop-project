@@ -1,6 +1,6 @@
 import ProfileIcon from "../Icons/ProfileIcon";
 import classes from "./profileButton.module.css";
-import { showFormActions } from "../Store/showLoginForm";
+import { modalActions } from "../Store/modalSlice";
 import { loginConfigActions } from "../Store/loginConfig";
 import { userActions } from "../Store/user";
 import { useDispatch } from "react-redux";
@@ -12,7 +12,7 @@ const ProfileButton = () => {
   const dispatch = useDispatch();
   const showFormHandler = () => {
     if (loggedIn) return;
-    dispatch(showFormActions.showForm());
+    dispatch(modalActions.showForm());
   };
   const logout = () => {
     dispatch(userActions.clearUser());

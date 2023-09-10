@@ -27,7 +27,29 @@ const Cart = () => {
       </div>
       {cart.length !== 0 && (
         <div className={classes.summary}>
-          <p>Summary</p>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              flexDirection: "column",
+            }}
+          >
+            <div style={{ marginBottom: "3rem", marginTop: "1rem" }}>
+              Summary
+            </div>
+            <div style={{ marginBottom: "1rem" }}>
+              Total:{" "}
+              {cart
+                .reduce(
+                  (accumulator, currentItem) =>
+                    accumulator + currentItem.price * currentItem.quantity,
+                  0
+                )
+                .toFixed(2)}
+              $
+            </div>
+            <button>Next Step</button>
+          </div>
         </div>
       )}
     </section>

@@ -2,7 +2,7 @@ import classes from "./loginForm.module.css";
 import Modal from "../UI/Modal";
 import logo from "../Icons/logo.png";
 import { changeFormActions } from "../Store/changeForm";
-import { showFormActions } from "../Store/showLoginForm";
+import { modalActions } from "../Store/modalSlice";
 import { loginConfigActions } from "../Store/loginConfig";
 import { userActions } from "../Store/user";
 import { useDispatch } from "react-redux";
@@ -52,7 +52,7 @@ const LoginForm = (props) => {
       },
       userDataHandler
     );
-    dispatch(showFormActions.hideForm());
+    dispatch(modalActions.hideForm());
     resetEmail();
     resetPassword();
   };
@@ -91,6 +91,7 @@ const LoginForm = (props) => {
       <form onSubmit={loginFormHandler} className={classes.loginForm}>
         <div className={classes.group}>
           <input
+            autoComplete="email"
             onChange={emailChangeHandler}
             onBlur={emailOnBlurHandler}
             required=""
@@ -108,6 +109,7 @@ const LoginForm = (props) => {
         </div>
         <div className={classes.group}>
           <input
+            autoComplete="current-password"
             required=""
             type="password"
             className={`${classes.input} ${

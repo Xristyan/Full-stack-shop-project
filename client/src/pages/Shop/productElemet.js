@@ -7,8 +7,30 @@ const ProductElement = (props) => {
         <img className={classes.image} src={`/images/${props.image}`} />
 
         <div className={classes.content}>
-          <p>{props.name}</p>
-          <label className={classes.price}>{props.price}$</label>
+          <div className={classes.headline}>{props.name}</div>
+          <div className={classes.subtitle}>
+            {props.gender}'{props.category}
+          </div>
+          <div className={classes.priceContent}>
+            <div
+              className={`${classes.price} ${
+                props.discount > 0 && classes.discounted
+              }`}
+            >
+              {props.price}$
+            </div>{" "}
+            {props.discount > 0 && (
+              <span>
+                {(props.price - props.price * (props.discount / 100)).toFixed(
+                  2
+                )}
+                $
+              </span>
+            )}
+            {props.discount > 0 && (
+              <div className={classes.discount}>{props.discount}% off</div>
+            )}
+          </div>
         </div>
       </Link>
     </>

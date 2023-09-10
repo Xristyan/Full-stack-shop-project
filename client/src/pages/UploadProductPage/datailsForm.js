@@ -116,6 +116,7 @@ const DetailsForm = (props) => {
           className={`${classes.description} ${
             DescriptionHasError && classes.invalid
           }`}
+          required="text"
           value={enteredDescription}
           placeholder="description"
           onBlur={DescriptionOnBlurHandler}

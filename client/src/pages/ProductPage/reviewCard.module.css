@@ -1,0 +1,13 @@
+.reviewContainer {
+  width: 25rem;
+  /* background-color: aqua; */
+  /* border: 1px solid #242424; */
+}
+.reviewInfo {
+  gap: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+.reviewContainer h3 {
+  margin: 0;
+}

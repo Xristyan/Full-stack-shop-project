@@ -1,124 +1,82 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import classes from "./productPage.module.css";
-import Carousel from "react-multi-carousel";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { userActions } from "../../Store/user";
 import { useSelector } from "react-redux";
-import { loginConfigActions } from "../../Store/loginConfig";
+import { useState } from "react";
+import Reviews from "./reviews";
+import Description from "./description";
+
 const ProductPage = (props) => {
+  const { eventId } = useParams();
   const dispatch = useDispatch();
   const events = useLoaderData();
+  console.log(events);
   const user = useSelector((state) => state.user.user);
   const isLogged = useSelector((state) => state.loginConfig.loggedIn);
-  // console.log(events.images[0].name);
-  const addtoCart = () => {
+  const [currImage, setCurrImage] = useState(0);
+  const addToCart = () => {
     if (!isLogged || !user.id) return;
     dispatch(
       userActions.addtoCart({
-        productId: events.id,
-        productName: events.name,
-        imageName: events.images[0].name,
-        price: events.price,
+        productId: events.product.id,
+        productName: events.product.name,
+        imageName: events.product.images[0].name,
+        price: events.product.price,
       })
     );
   };
-  const responsive = {
-    superLargeDesktop: {
-      breakpoint: { max: 4000, min: 3000 },
-      items: 1,
-      // partialVisibilityGutter: 40,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 1,
-      // partialVisibilityGutter: 40,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 1,
-      // partialVisibilityGutter: 40,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-      // partialVisibilityGutter: 40,
-    },
+  const prevImage = () => {
+    if (currImage === 0) return;
+    setCurrImage((prevImage) => {
+      return prevImage - 1;
+    });
+  };
+  const nextImage = () => {
+    if (currImage === events.product.images.length - 1) return;
+    setCurrImage((prevImage) => {
+      return prevImage + 1;
+    });
   };
   return (
     <>
       <section className={classes.productContainer}>
-        <div className={classes.productInfoContainer}>
-          <div className={classes.imageContainer}>
-            <Carousel
-              additionalTransfrom={0}
-              arrows
-              autoPlaySpeed={3000}
-              centerMode={false}
-              className=""
-              containerClass="container"
-              dotListClass=""
-              draggable
-              focusOnSelect={false}
-              itemClass=""
-              keyBoardControl
-              infinite
-              minimumTouchDrag={80}
-              pauseOnHover
-              renderArrowsWhenDisabled={false}
-              renderButtonGroupOutside={false}
-              renderDotsOutside={false}
-              responsive={responsive}
-              rewind={false}
-              rewindWithAnimation={false}
-              rtl={false}
-              shouldResetAutoplay
-              showDots={false}
-              sliderClass=""
-              slidesToSlide={1}
-              swipeable
-            >
-              {events.images.map((img) => {
-                return (
-                  <img
-                    key={img.name}
-                    className={classes.image}
-                    src={`/images/${img.name}`}
-                  />
-                );
-              })}
-            </Carousel>
+        <div className={classes.imagesContainer}>
+          <div className={classes.dots}>
+            {events.product.images.map((img, i) => {
+              return (
+                <img
+                  className={`${i === currImage && classes.active}`}
+                  onClick={() => {
+                    setCurrImage(i);
+                  }}
+                  id={i}
+                  key={img.id}
+                  src={`/images/${img.name}`}
+                />
+              );
+            })}
           </div>
-          <div className={classes.productInfo}>
-            <p>{events.name}</p>
-            <p>{events.price}$</p>
+          <div className={classes.displayedImage}>
+            <button className={classes.btnLeft} onClick={prevImage}>
+              {"<"}
+            </button>
+            <img
+              className={classes.image}
+              src={`/images/${events.product.images[currImage].name}`}
+            />
+            <button className={classes.btnRight} onClick={nextImage}>
+              {">"}
+            </button>
           </div>
         </div>
-        {/* <div className={classes.line}></div> */}
-        <div className={classes.descriptionContainer}>
-          <h1> {events.brand.toUpperCase()}</h1>
-          <p>{events.typeOfProduct}</p>
-          <div className={classes.paragraphColor}>
-            Color: {events.color}
-            <div
-              style={{ backgroundColor: events.color }}
-              className={classes.color}
-            ></div>
-          </div>
-          <p>Description: {events.description}</p>
-          <p>Gender: {events.gender}</p>
-          <p>Material: {events.material}</p>
-
-          <div className={classes.sizes}>
-            <div className={classes.square}>XS</div>
-            <div className={classes.square}>S</div>
-            <div className={classes.square}>M</div>
-            <div className={classes.square}>L</div>
-          </div>
-          <button className={classes.button} onClick={addtoCart}>
-            Add to Cart
-          </button>
-        </div>
+        <Description events={events.product} addToCart={addToCart} />
+        <Reviews
+          productNumber={eventId}
+          reviews={events.product.reviews}
+          reviewsCount={events.reviewsCount}
+          rating={events.averageRating}
+        />
       </section>
     </>
   );
@@ -127,7 +85,7 @@ export default ProductPage;
 export async function loader({ params }) {
   console.log(params);
   const response = await fetch(
-    `http://localhost:8080/product/getProduct/${params.eventId}`
+    `http://localhost:8080/products/getProduct/${params.eventId}?itemsPerPage=5`
   );
   if (!response.ok) {
     return {

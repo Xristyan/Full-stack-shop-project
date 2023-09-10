@@ -1,9 +1,11 @@
-.sortContainer {
-  max-width: 80rem;
-  background-color: #242424;
-  padding: 1.5rem;
-  margin: 3rem auto;
+.shopContainer {
+  margin: 0 auto 5rem auto;
+  max-width: 100rem;
+  display: flex;
+  justify-content: center;
+  position: relative;
 }
+
 .line {
   max-width: 85rem;
   margin: 1rem auto;
@@ -11,10 +13,9 @@
   border-radius: 60%;
 }
 .productsContainer {
-  margin: 0 auto;
-  max-width: 90rem;
+  padding: 0 1rem;
+  padding-top: 0.8rem;
   display: grid;
-  justify-content: center;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
 }

@@ -2,8 +2,9 @@
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   align-items: center;
-  margin: 0 1rem;
+  margin: 1rem 1rem;
   margin-top: 1rem;
+  margin-bottom: 1rem;
   padding: 0.5rem 1rem;
   gap: 4rem;
   border-bottom: 0.1rem solid #b8b4b4;
@@ -13,7 +14,6 @@
   margin: 0;
 }
 .cartItem:last-child {
-  margin-bottom: 1rem;
   border: none;
 }
 .details {
@@ -34,7 +34,7 @@
 /* .details { */
 .actions {
   display: flex;
-  gap: 0.3rem;
+  gap: 0.5rem;
   align-items: center;
 }
 /* .actions button {
@@ -50,19 +50,20 @@
 
 .removeButton {
   background: none;
+  cursor: pointer;
   border: none;
   justify-self: end;
   margin-right: 2rem;
 }
 .quantityButton {
+  cursor: pointer;
   background: none;
-  width: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
   border: 1px solid rgb(0, 0, 0);
   display: flex;
   justify-content: center;
-  /* color: rgb(255, 255, 255); */
-  font-weight: 700;
-  /* background-color: #242424; */
+  align-items: center;
 }
 .quantityButton:hover {
   color: orange;
@@ -71,10 +72,9 @@
   /* background-color: #242424; */
 }
 .removeButton:hover {
-  font-size: 1.5rem;
+  transform: scale(2);
   font-weight: 600;
   color: orange;
-  margin-right: 1.87rem;
   transition: all 0.1s;
 }
 @media only screen and (max-width: 600px) {

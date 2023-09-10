@@ -1,15 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
-import showLoginFormReducer from "./showLoginForm";
+import modalReducer from "./modalSlice";
 import changeFormReducer from "./changeForm";
 import loginConfigReducer from "./loginConfig";
 import userReducer from "./user";
-import user from "./user";
+import filterReducer from "./filterSlice";
+import sortReducer from "./sortSlice";
+import screenWidthReducer from "./screenWidthSlice";
 const store = configureStore({
   reducer: {
-    showLoginForm: showLoginFormReducer,
+    modal: modalReducer,
     changeForm: changeFormReducer,
     loginConfig: loginConfigReducer,
     user: userReducer,
+    filters: filterReducer,
+    sort: sortReducer,
+    screenWidth: screenWidthReducer,
   },
 });
 export default store;

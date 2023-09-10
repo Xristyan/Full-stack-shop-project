@@ -3,7 +3,7 @@ import logo from "../Icons/logo.png";
 import { changeFormActions } from "../Store/changeForm";
 import { useDispatch } from "react-redux";
 import useInput from "../hooks/use-unput";
-import { showFormActions } from "../Store/showLoginForm";
+import { modalActions } from "../Store/modalSlice";
 import { loginConfigActions } from "../Store/loginConfig";
 import { userActions } from "../Store/user";
 import useHttp from "../hooks/use-http";
@@ -66,7 +66,7 @@ const RegisterForm = (props) => {
       },
       userDataHandler
     );
-    dispatch(showFormActions.hideForm());
+    dispatch(modalActions.hideForm());
     resetEmail();
     resetPassword();
   };
@@ -102,6 +102,7 @@ const RegisterForm = (props) => {
       <form onSubmit={registeFormHandler} className={classes.loginForm}>
         <div className={classes.group}>
           <input
+            autoComplete="email"
             onChange={emailChangeHandler}
             onBlur={emailOnBlurHandler}
             value={enteredEmail}
@@ -120,6 +121,7 @@ const RegisterForm = (props) => {
 
         <div className={classes.group}>
           <input
+            autoComplete="current-password"
             required=""
             type="password"
             className={`${classes.input} ${
@@ -146,6 +148,7 @@ const RegisterForm = (props) => {
         </div>
         <div className={classes.group}>
           <input
+            autoComplete="current-password"
             required=""
             type="password"
             className={`${classes.input} ${
@@ -168,7 +171,7 @@ const RegisterForm = (props) => {
           onClick={registeFormHandler}
           className={classes.button}
         >
-          Register
+          {isLoading ? "loading..." : "Register"}
         </button>
       </form>
       <div className={classes.textContainer}>

@@ -1,4 +1,4 @@
-.mainContainer {
+/* .mainContainer {
   margin: 2rem auto;
   backdrop-filter: blur(1.5rem);
   background-color: rgba(118, 127, 127, 0.2);
@@ -11,25 +11,59 @@
   align-items: center;
   gap: 1rem;
   overflow: hidden;
-}
+} */
 .cardContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
+  margin: 0 auto;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+}
+.stacked {
+  display: grid;
+}
+.stacked * {
+  grid-column: 1/2;
+  grid-row: 1/2;
 }
 
-.logo {
-  max-width: 18.75rem;
-  border: 3px solid rgb(255, 180, 4);
-  height: 26rem;
-  display: flex;
-  border-radius: 1.5rem;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.26);
+.content {
+  position: relative;
+  align-self: end;
+  padding-left: 1rem;
+  padding-bottom: 0.5rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* background-color: white; */
+}
+.content p {
+  margin: 0;
+}
+.item {
+  aspect-ratio: 1/1.35;
   overflow: hidden;
-  font-family: system-ui;
+  text-decoration: none;
+  color: #242424;
 }
 .image {
-  height: 26rem;
-  object-fit: fill;
+  aspect-ratio: 1/1.2;
+  width: 100%;
+  object-fit: cover;
+}
+.headline {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 0.8rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+.subline {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.8px;
 }

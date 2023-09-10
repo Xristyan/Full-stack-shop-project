@@ -18,10 +18,10 @@ const DropDown = () => {
           <span>Cloathing</span>
           <Link to="Men/All">All Clothing</Link>
           <a href="#">Jeans</a>
-          <a href="#">Trousers</a>
+          <Link to="Men/Trousers">Trousers</Link>
           <a href="#">Jackets</a>
           <a href="#">Tracks suits</a>
-          <a href="#">T-shirts</a>
+          <Link to="Men/T-shirts">T-shirts</Link>
         </div>
         <div className={classes.dropdownCategory}>
           <span>Shoes</span>

@@ -18,7 +18,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       {
-        path: "Men",
+        path: ":peopleType",
         element: <ItemsRoot />,
         children: [
           {
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
             loader: itemsLoader,
           },
           {
-            path: ":Category",
+            path: ":category",
             element: <CategoriesRoot />,
             children: [
               {

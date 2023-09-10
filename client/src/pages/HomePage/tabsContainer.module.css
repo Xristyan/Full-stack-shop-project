@@ -1,19 +1,17 @@
 .tapsContainer {
   margin: 2rem auto;
-  max-width: 60rem;
+  max-width: 50rem;
   display: flex;
   border: none;
   flex-direction: column;
   justify-content: baseline;
   /* box-shadow: 0 10px 10px rgba(0, 0, 0, 0.26); */
-  overflow: hidden;
   font-family: system-ui;
 }
 .tabs {
   margin-top: 0.5rem;
-  padding: 0 5rem;
   display: flex;
-  justify-content: center;
+  justify-content: end;
   gap: 1rem;
 }
 .button {
@@ -24,32 +22,40 @@
   color: white;
   padding: 0.75rem 3rem;
   max-width: 8rem;
-  flex: 1;
+
   display: flex;
   justify-content: space-around;
   align-items: center;
   border-radius: 25px;
   font-weight: bold;
   cursor: pointer;
-  z-index: 100;
-  transform: translateY(50%);
+  z-index: 1;
+  transform: translateY(40%);
   transition: transform 0.3s;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: 300;
+
+  letter-spacing: 0.8px;
 }
 .contentContainer {
   background-color: rgb(251, 251, 251);
   max-width: 60rem;
+  height: 16.55rem;
   padding: 4rem 1rem;
-  gap: 1rem;
+  gap: 8rem;
   border-radius: 1.5rem;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 .imgContainer {
   border-radius: 50%;
+  margin-left: 1rem;
   width: 7rem;
   height: 7rem;
   display: flex;
+  transform: scale(2.8);
   justify-content: center;
   align-items: center;
   border: 2px solid orange;
@@ -70,15 +76,32 @@
   border-radius: 1rem;
   padding: 1rem;
   font-family: system-ui;
-}
-.description {
-  max-width: 25rem;
+  flex: 1;
+  z-index: 1;
   color: white;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.26);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 300;
+  letter-spacing: 0.8px;
 }
+
 .description button {
   padding: 0.5rem;
   border-radius: 0.8rem;
   border: none;
   box-shadow: 1px 1px 10px rgb(209, 202, 202);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.8px;
+}
+@media only screen and (max-width: 320px) {
+  .button {
+    max-width: 4rem;
+    padding: 0.75rem 2.5rem;
+  }
 }
