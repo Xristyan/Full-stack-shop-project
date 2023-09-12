@@ -1,16 +1,15 @@
 package com.StoreProject.store.controller;
 
 import com.StoreProject.store.auth.AuthenticationRequest;
-import com.StoreProject.store.modal.Address;
-import com.StoreProject.store.modal.Cart;
-import com.StoreProject.store.modal.User;
+import com.StoreProject.store.model.Address;
+import com.StoreProject.store.model.Cart;
+import com.StoreProject.store.model.User;
 import com.StoreProject.store.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")

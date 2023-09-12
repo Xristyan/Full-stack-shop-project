@@ -1,6 +1,6 @@
 package com.StoreProject.store.repository;
 
-import com.StoreProject.store.modal.User;
+import com.StoreProject.store.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

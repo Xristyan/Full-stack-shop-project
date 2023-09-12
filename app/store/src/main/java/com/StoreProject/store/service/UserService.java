@@ -1,13 +1,11 @@
 package com.StoreProject.store.service;
 
 import com.StoreProject.store.auth.AuthenticationRequest;
-import com.StoreProject.store.modal.Address;
-import com.StoreProject.store.modal.Cart;
-import com.StoreProject.store.modal.User;
-import org.springframework.http.ResponseEntity;
+import com.StoreProject.store.model.Address;
+import com.StoreProject.store.model.Cart;
+import com.StoreProject.store.model.User;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UserService {
     public List<User> getAllUsers();

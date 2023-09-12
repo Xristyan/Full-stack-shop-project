@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ValidGenderValidator implements ConstraintValidator<ValidGender,String> {
-    private static final List<String> GENDERS= Arrays.asList("Male","Female");
+    private static final List<String> GENDERS= Arrays.asList("Men","Women");
     private List<String> upperCaseValidGenders;
     @Override
     public void initialize(ValidGender constraintAnnotation) {

@@ -5,8 +5,8 @@ import com.StoreProject.store.Exception.NotFoundException;
 import com.StoreProject.store.Exception.UserAlreadyRegisteredException;
 import com.StoreProject.store.config.JwtService;
 
-import com.StoreProject.store.modal.Role;
-import com.StoreProject.store.modal.User;
+import com.StoreProject.store.model.Role;
+import com.StoreProject.store.model.User;
 import com.StoreProject.store.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,8 +14,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

@@ -1,75 +1,61 @@
 package com.StoreProject.store.service;
 
 import com.StoreProject.store.Exception.NotFoundException;
-import com.StoreProject.store.modal.ProductResponse;
-import com.StoreProject.store.modal.Products;
-import com.StoreProject.store.modal.Reviews;
-import com.StoreProject.store.modal.User;
+import com.StoreProject.store.model.Products;
+import com.StoreProject.store.model.Reviews;
+import com.StoreProject.store.model.ReviewsResponse;
+import com.StoreProject.store.model.config.FilterService.Filter;
+import com.StoreProject.store.model.config.FilterService.ProductsFilter;
+import com.StoreProject.store.model.config.ReviewsService;
 import com.StoreProject.store.repository.ProductsRepository;
 import com.StoreProject.store.repository.ReviewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
-import java.time.LocalDate;
 import java.util.*;
 
 @Service
 public class ProductServiceImpl implements ProductService{
+
+    @Autowired
+    private ProductsFilter productsFilter;
+    @Autowired
+    private ReviewsService reviewsService;
     @Autowired
     private ProductsRepository productsRepository;
 
     @Autowired
     private ReviewsRepository reviewsRepository;
 
-    @Override
-    public Products saveProduct(Products products) {
-
-
-        return productsRepository.save(products);
-    }
 
     @Override
-    public List<Products> getProducts(String gender, String category) {
-        if(category.equals("All") || category.equals("undefined"))
+    public List<Products> getProducts(String peopleType, String category, int page, int itemsPerPage, Filter filter) {
+        if(peopleType.equalsIgnoreCase("Children") && category.equalsIgnoreCase("All") || category.equalsIgnoreCase("undefined"))
         {
-            return productsRepository.findByGender(gender);
+            return productsRepository.findByForChildren(true);
+        }
+
+        if(category.equalsIgnoreCase("All") || category.equalsIgnoreCase("undefined"))
+        {
+
+           return productsFilter.productsFilter(productsRepository.findByGenderAndForChildren(peopleType,false),page,itemsPerPage,filter);
+//            return productsRepository.findByGenderAndForChildren(peopleType,false);
         }
         else {
-            return productsRepository.findByGenderAndCategory(gender, category);
+            return productsRepository.findByGenderAndCategoryAndForChildren(peopleType, category,false);
         }
     }
 
     @Override
-    public ProductResponse getProduct(int id,int itemsPerPage) {
+    public Products getProduct(int id,int itemsPerPage) {
         Optional<Products> optionalProducts = productsRepository.findById(id);
         Products product=optionalProducts.orElseThrow(() -> new NotFoundException("Product with ID " + id + " not found"));
 
-        double sum=0;
-        for (Reviews review : product.getReviews()) {
-            sum += review.getRating();
-        }
-
-        int reviewsCount=product.getReviews().size();
-        Collections.reverse(product.getReviews());
-        if(product.getReviews().size()>=itemsPerPage) {
-            product.setReviews(product.getReviews().subList(0, itemsPerPage));
-        }
-
-        ProductResponse productResponse=ProductResponse.builder()
-                .product(product)
-                .reviewsCount(reviewsCount)
-                .averageRating(sum)
-                .build();
-
-
-        return productResponse;
+        return product;
     }
 
 @Override
-    public Reviews saveReview(Reviews review,int id)
+    public ReviewsResponse saveReview(Reviews review,int id,int page,int itemsPerPage)
     {
         Optional<Products> optionalProduct=productsRepository.findById(id);
         Products product=optionalProduct.orElseThrow(()-> new NotFoundException("Product with ID " + id + " not found"));
@@ -80,25 +66,20 @@ public class ProductServiceImpl implements ProductService{
 
         }
 
-        Reviews reviewBuild= Reviews.builder().content(review.getContent())
-                .date(LocalDate.now())
-                .userName(review.getUserName())
-                .rating(review.getRating())
-                .product(id)
-                .build();
-
-        product.getReviews().add(reviewBuild);
+        product.getReviews().add( reviewsService.buildReview(id,review));
         productsRepository.save(product);
 
-        return reviewBuild;
+        return reviewsService.buildReviewResponse(product,page,itemsPerPage);
     }
 
     @Override
-    public List<Reviews> getReviews(int id, int page, int itemsPerPage) {
+    public ReviewsResponse getReviews(int id, int page, int itemsPerPage) {
         Optional<Products> optionalProduct=productsRepository.findById(id);
         Products product=optionalProduct.orElseThrow(()-> new NotFoundException("Product with ID " + id + " not found"));
 
-        return product.getReviews();
+
+       return reviewsService.buildReviewResponse(product,page,itemsPerPage);
+
     }
 
 

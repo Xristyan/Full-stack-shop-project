@@ -11,11 +11,12 @@ const ColorsFilter = (props) => {
     dispatch(filtersActions.showColorsFilterHandler());
   };
   const inputChangeHandler = (e) => {
+    e.preventDefault();
     dispatch(filtersActions.colorsFilterHandler(e.target.value));
   };
 
   return (
-    <section className={classes.filterSection}>
+    <form className={classes.filterSection}>
       <h2 onClick={showFilterHandler}>
         Color:<span>{showFilters ? "▲" : "▼"}</span>
       </h2>
@@ -38,7 +39,7 @@ const ColorsFilter = (props) => {
           );
         })}
       </div>
-    </section>
+    </form>
   );
 };
 export default ColorsFilter;

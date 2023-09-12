@@ -8,19 +8,19 @@
   flex-direction: column;
   justify-content: flex-start;
   font-family: sans-serif;
-  transition: margin-left 300ms ease-in-out, visibility 300ms;
-  /* border-top-right-radius: 1rem; */
+  transition: margin-left 300ms ease-in-out, visibility 300ms, opacity 300ms;
   border-top: 1px solid white;
 }
 .active {
   position: sticky;
-  z-index: 9;
+  /* z-index: 9; */
   top: 4rem;
-
+  opacity: 1;
   visibility: visible;
 }
 .unActive {
   margin-left: -270px;
+  opacity: 0;
   visibility: hidden;
 }
 .modalFilter {

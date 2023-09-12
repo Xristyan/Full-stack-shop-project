@@ -51,7 +51,7 @@ const RegisterForm = (props) => {
   const { isLoading, error, requestHandler } = useHttp();
   const setJwtToken = (data) => {
     if (!data) return;
-    console.log("sada");
+
     dispatch(loginConfigActions.login(true));
     localStorage.setItem("jwtToken", data.token);
     requestHandler(
@@ -71,7 +71,6 @@ const RegisterForm = (props) => {
     resetPassword();
   };
   const userDataHandler = (data) => {
-    console.log(data);
     if (!data) return;
     dispatch(userActions.setUser(data));
   };

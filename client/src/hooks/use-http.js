@@ -13,7 +13,7 @@ const useHttp = () => {
         headers: requestConfig.headers ? requestConfig.headers : {},
         body: requestConfig.body ? JSON.stringify(requestConfig.body) : null,
       });
-      console.log(response);
+
       if (!response.ok) {
         const errorResponse = await response.json();
         const errorMessage = errorResponse.message;
@@ -25,7 +25,6 @@ const useHttp = () => {
       }
     } catch (err) {
       setError(err.message || "Something went wrong!");
-      console.log(err.message);
     }
     setIsLoading(false);
   }, []);

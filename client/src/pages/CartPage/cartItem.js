@@ -26,7 +26,7 @@ const CartItem = (props) => {
   const deleteFromCart = () => {
     dispatch(userActions.deleteFromCart(props.productId));
   };
-  console.log(props.imageName);
+
   return (
     <div className={classes.cartItem}>
       <div className={classes.imgContainer}>

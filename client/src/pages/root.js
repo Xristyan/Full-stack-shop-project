@@ -7,17 +7,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { modalActions } from "../Store/modalSlice";
 import { useEffect } from "react";
 import useHttp from "../hooks/use-http";
-import Filter from "./Shop/filters/filter";
-import Modal from "../UI/Modal";
 import FilterModal from "./Shop/filters/filterModal";
+import useResponsive from "../hooks/use-Responsive";
 const Root = () => {
   const { requestHandler } = useHttp();
   const dispatch = useDispatch();
   const showFilterModal = useSelector((state) => state.modal.showFilter);
-  const screenWidth = useSelector((state) => state.screenWidth.screenWidth);
   const showForm = useSelector((state) => state.modal.showForm);
   const cart = useSelector((state) => state.user.cart);
   const user = useSelector((state) => state.user.user);
+  const screenWidth = useResponsive();
 
   useEffect(() => {
     if (!user.id) return;
@@ -35,7 +34,6 @@ const Root = () => {
   const hideFormHandler = () => {
     dispatch(modalActions.hideForm());
   };
-  console.log(showFilterModal);
   return (
     <React.Fragment>
       {showFilterModal && screenWidth <= 960 && <FilterModal />}

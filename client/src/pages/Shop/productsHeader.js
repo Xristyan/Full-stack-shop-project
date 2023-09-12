@@ -5,33 +5,25 @@ import { modalActions } from "../../Store/modalSlice";
 import { screenWidthActions } from "../../Store/screenWidthSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { sortActions } from "../../Store/sortSlice";
+import useResponsive from "../../hooks/use-Responsive";
 
 const ProductsHeader = (props) => {
   const dispatch = useDispatch();
   const screenWidth = useSelector((state) => state.screenWidth.screenWidth);
   const currentSort = useSelector((state) => state.sort.sortType);
 
-  const handleResize = () => {
-    dispatch(screenWidthActions.screenWidthHandler(window.innerWidth));
-    if (window.innerWidth >= 960) {
-      dispatch(modalActions.toggleFilterModal(false));
-    }
-  };
   const toggleModal = () => {
     if (screenWidth >= 960) {
       props.toggleFilter();
     } else {
-      console.log("yes");
       dispatch(modalActions.toggleFilterModal(true));
     }
   };
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+    if (screenWidth >= 960) {
+      dispatch(modalActions.toggleFilterModal(false));
+    }
+  }, [screenWidth]);
   const sortProducts = (sortingType) => {
     dispatch(sortActions.sortTypeHandler(sortingType));
   };

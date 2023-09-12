@@ -17,7 +17,6 @@ const DropDown = () => {
         <div className={classes.dropdownCategory}>
           <span>Cloathing</span>
           <Link to="Men/All">All Clothing</Link>
-          <a href="#">Jeans</a>
           <Link to="Men/Trousers">Trousers</Link>
           <a href="#">Jackets</a>
           <a href="#">Tracks suits</a>

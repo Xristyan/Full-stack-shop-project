@@ -57,7 +57,6 @@ const LoginForm = (props) => {
     resetPassword();
   };
   const userDataHandler = (data) => {
-    console.log(data);
     if (!data) return;
     dispatch(userActions.setUser(data));
   };

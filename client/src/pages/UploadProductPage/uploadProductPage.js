@@ -1,11 +1,10 @@
-import useHttp from "../../hooks/use-http";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import classes from "./uploadProduct.module.css";
 import InputImage from "./inputImage";
 import DetailsForm from "./datailsForm";
+import CategoryDropDown from "./categoryDropdown";
 const UploadProductPage = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const { requestHandler } = useHttp();
+  const [category, setCategory] = useState("");
   const [imageStore, setImageStore] = useState({});
   const addImage = (image) => {
     setImageStore((prev) => {
@@ -18,35 +17,30 @@ const UploadProductPage = () => {
       return updatedImageStore;
     });
   };
-  useEffect(() => {}, [imageStore]);
-  const productHandler = async (e) => {
+  const productHandler = async (product) => {
     try {
+      if (Object.keys(imageStore).length === 0 || category === "") return;
       const formData = new FormData();
-      formData.append("image", e.target.files[0]);
-      const productData = {
-        name: "Product Name",
-        description: "Product Description",
-        material: "Product Material",
-        color: "Product Color",
-        price: 19.99,
-        gender: "Male",
-        forChildren: true,
-        typeOfProduct: "Product Type",
-        brand: "Product Brand",
-      };
-      formData.append("product", JSON.stringify(productData));
-      const response = await fetch("http://localhost:8080/product/add", {
+      for (const key in imageStore) {
+        formData.append("image", imageStore[key]);
+      }
+      product.category = category;
+      formData.append("product", JSON.stringify(product));
+
+      const response = await fetch("http://localhost:8080/products/add", {
         body: formData,
         method: "POST",
       });
     } catch (err) {
+      console.log(err);
       console.error(err);
     }
   };
   return (
     <section className={classes.uploadContainer}>
+      <CategoryDropDown setCategoryHandler={setCategory} />
       <div className={classes.imageUploadContainer}>
-        {Array.from({ length: 3 }, (_, index) => index + 1).map((i) => {
+        {Array.from({ length: 6 }, (_, index) => index + 1).map((i) => {
           return (
             <InputImage
               key={i}

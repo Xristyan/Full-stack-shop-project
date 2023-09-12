@@ -10,8 +10,7 @@ import Description from "./description";
 const ProductPage = (props) => {
   const { eventId } = useParams();
   const dispatch = useDispatch();
-  const events = useLoaderData();
-  console.log(events);
+  const product = useLoaderData();
   const user = useSelector((state) => state.user.user);
   const isLogged = useSelector((state) => state.loginConfig.loggedIn);
   const [currImage, setCurrImage] = useState(0);
@@ -19,10 +18,10 @@ const ProductPage = (props) => {
     if (!isLogged || !user.id) return;
     dispatch(
       userActions.addtoCart({
-        productId: events.product.id,
-        productName: events.product.name,
-        imageName: events.product.images[0].name,
-        price: events.product.price,
+        productId: product.id,
+        productName: product.name,
+        imageName: product.images[0].name,
+        price: product.price,
       })
     );
   };
@@ -33,7 +32,7 @@ const ProductPage = (props) => {
     });
   };
   const nextImage = () => {
-    if (currImage === events.product.images.length - 1) return;
+    if (currImage === product.images.length - 1) return;
     setCurrImage((prevImage) => {
       return prevImage + 1;
     });
@@ -43,7 +42,7 @@ const ProductPage = (props) => {
       <section className={classes.productContainer}>
         <div className={classes.imagesContainer}>
           <div className={classes.dots}>
-            {events.product.images.map((img, i) => {
+            {product.images.map((img, i) => {
               return (
                 <img
                   className={`${i === currImage && classes.active}`}
@@ -63,27 +62,21 @@ const ProductPage = (props) => {
             </button>
             <img
               className={classes.image}
-              src={`/images/${events.product.images[currImage].name}`}
+              src={`/images/${product.images[currImage].name}`}
             />
             <button className={classes.btnRight} onClick={nextImage}>
               {">"}
             </button>
           </div>
         </div>
-        <Description events={events.product} addToCart={addToCart} />
-        <Reviews
-          productNumber={eventId}
-          reviews={events.product.reviews}
-          reviewsCount={events.reviewsCount}
-          rating={events.averageRating}
-        />
+        <Description events={product} addToCart={addToCart} />
+        <Reviews productNumber={eventId} />
       </section>
     </>
   );
 };
 export default ProductPage;
 export async function loader({ params }) {
-  console.log(params);
   const response = await fetch(
     `http://localhost:8080/products/getProduct/${params.eventId}?itemsPerPage=5`
   );

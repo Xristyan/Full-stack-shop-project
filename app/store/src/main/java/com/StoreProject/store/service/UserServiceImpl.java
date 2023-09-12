@@ -1,10 +1,9 @@
 package com.StoreProject.store.service;
 
 import com.StoreProject.store.auth.AuthenticationRequest;
-import com.StoreProject.store.modal.Address;
-import com.StoreProject.store.modal.Cart;
-import com.StoreProject.store.modal.Products;
-import com.StoreProject.store.modal.User;
+import com.StoreProject.store.model.Address;
+import com.StoreProject.store.model.Cart;
+import com.StoreProject.store.model.User;
 import com.StoreProject.store.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

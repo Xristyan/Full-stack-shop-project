@@ -9,15 +9,15 @@ import NewReview from "./newReview";
 import Loader from "../../UI/Loader";
 import Pagination from "../../UI/Pagination";
 import { useEffect } from "react";
-const reviewsPageSize = 3;
+const reviewsPageSize = 4;
 const Reviews = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [reviews, setReviews] = useState(props.reviews);
+  const [reviews, setReviews] = useState([]);
   const dispatch = useDispatch();
   const [isAddReviewActive, setIsAddReviewActive] = useState(false);
-  const [sumOfRating, setSumOfRating] = useState(props.rating);
-  const [numberOfReview, setNumberOfReviews] = useState(props.reviewsCount);
   const { requestHandler, isLoading, error } = useHttp();
+  const [reviewsCount, setReviewsCount] = useState(0);
+  const [sumOfRating, setSumOfRating] = useState(0);
   const loggedIn = useSelector((state) => state.loginConfig.loggedIn);
   const newReviewHandler = () => {
     if (!loggedIn) {
@@ -28,24 +28,26 @@ const Reviews = (props) => {
       return !prev;
     });
   };
-  // useEffect(() => {
-  //   requestHandler(
-  //     {
-  //       url: `http://localhost:8080/products/${props.productNumber}/reviews?page=${currentPage}&itemsPerPage=${reviewsPageSize}`,
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: "Bearer " + localStorage.getItem("jwtToken"),
-  //       },
-  //     },
-  //     (data) => {
-  //       setReviews(data);
-  //     }
-  //   );
-  // }, [currentPage]);
+  useEffect(() => {
+    requestHandler(
+      {
+        url: `http://localhost:8080/products/${props.productNumber}/reviews?page=${currentPage}&itemsPerPage=${reviewsPageSize}`,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("jwtToken"),
+        },
+      },
+      (data) => {
+        setReviews(data.reviews);
+        setReviewsCount(data.reviewsCount);
+        setSumOfRating(data.averageRating);
+      }
+    );
+  }, [currentPage]);
   const addnewReview = (newReview) => {
     requestHandler(
       {
-        url: `http://localhost:8080/products/${props.productNumber}/addReview`,
+        url: `http://localhost:8080/products/${props.productNumber}/addReview?page=${currentPage}&itemsPerPage=${reviewsPageSize}`,
         body: newReview,
         method: "POST",
         headers: {
@@ -55,30 +57,22 @@ const Reviews = (props) => {
       },
       (data) => {
         setIsAddReviewActive(false);
-        setReviews((prev) => {
-          return [data, ...prev];
-        });
-        setSumOfRating((prev) => {
-          return prev + newReview.rating;
-        });
-        setNumberOfReviews((prev) => {
-          return prev + 1;
-        });
+        setReviews(data.reviews);
+        setReviewsCount(data.reviewsCount);
+        setSumOfRating(data.averageRating);
       }
     );
   };
   return (
     <section className={classes.reviews}>
       <button className={classes.reviewsButton}>
-        Reviews ({numberOfReview})
+        Reviews ({reviewsCount})
         <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
-          {sumOfRating === 0 ? "0" : (sumOfRating / numberOfReview).toFixed(1)}
+          {sumOfRating === 0 ? "0" : (sumOfRating / reviewsCount).toFixed(1)}
 
           <Stars
             rating={
-              isNaN(sumOfRating / numberOfReview)
-                ? 0
-                : sumOfRating / numberOfReview
+              isNaN(sumOfRating / reviewsCount) ? 0 : sumOfRating / reviewsCount
             }
           />
         </div>
@@ -93,23 +87,26 @@ const Reviews = (props) => {
           product={props.productNumber}
         />
       )}
-      {isLoading && <Loader />}
-      {reviews.map((review) => {
-        return (
-          <ReviewCard
-            key={review.id}
-            id={review.id}
-            date={review.date}
-            rating={review.rating}
-            userName={review.userName}
-            content={review.content}
-          />
-        );
-      })}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        reviews.map((review) => {
+          return (
+            <ReviewCard
+              key={review.id}
+              id={review.id}
+              date={review.date}
+              rating={review.rating}
+              userName={review.userName}
+              content={review.content}
+            />
+          );
+        })
+      )}
       <Pagination
         className="pagination-bar"
         currentPage={currentPage}
-        totalCount={numberOfReview}
+        totalCount={reviewsCount}
         pageSize={reviewsPageSize}
         onPageChange={(page) => setCurrentPage(page)}
       />

@@ -7,15 +7,17 @@ const useFilterAndSort = (productsData, peopleType, category) => {
   const priceFilter = useSelector((state) => state.filters.priceFilter);
   const brandFilter = useSelector((state) => state.filters.brandFilter);
   const sortType = useSelector((state) => state.sort.sortType);
+  console.log(productsData);
   useEffect(() => {
     const data = productsData.filter((item) => {
-      const type = peopleType
-        ? item.gender.toUpperCase() === peopleType.toUpperCase()
-        : true;
-      const categories =
-        category !== "All"
-          ? item.category.toUpperCase() === category.toUpperCase()
-          : true;
+      console.log(peopleType, category);
+      // const type = peopleType
+      //   ? item.gender.toUpperCase() === peopleType.toUpperCase()
+      //   : true;
+      // const categories =
+      //   category !== "All"
+      //     ? item.category.toUpperCase() === category.toUpperCase()
+      //     : true;
       const colors =
         colorFilter.length !== 0 ? colorFilter.includes(item.color) : true;
 
@@ -34,7 +36,7 @@ const useFilterAndSort = (productsData, peopleType, category) => {
       const brands =
         brandFilter.length !== 0 ? brandFilter.includes(item.brand) : true;
 
-      return type && categories && colors && prices && brands;
+      return colors && prices && brands;
     });
     if (sortType === "") {
       setFilteredData(data);

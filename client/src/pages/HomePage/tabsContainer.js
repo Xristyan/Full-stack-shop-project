@@ -7,7 +7,6 @@ import earingImg from "../../images/earingImg.jpg";
 const TabsContainer = () => {
   const [buttonActive, setButtonActive] = useState("1");
   const check = (e) => {
-    console.log(e.target.value);
     setButtonActive(e.target.value);
   };
   return (

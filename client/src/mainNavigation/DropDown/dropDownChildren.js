@@ -8,7 +8,7 @@ const DropDownChildren = () => {
     <div className={classes.dropdown}>
       <NavLink
         className={({ isActive }) => (isActive ? classes.active : undefined)}
-        to="/Children"
+        to="Children/All"
       >
         Children
       </NavLink>

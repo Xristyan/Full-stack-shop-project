@@ -5,6 +5,7 @@ const Input = React.forwardRef((props, ref) => {
   return (
     <div className={props.containerClass}>
       <input
+        autoComplete="auto"
         value={props.value}
         onBlur={props.onBlur}
         onChange={props.onChange}

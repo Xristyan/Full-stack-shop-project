@@ -1,19 +1,17 @@
 package com.StoreProject.store.service;
 
-import com.StoreProject.store.modal.ProductResponse;
-import com.StoreProject.store.modal.Products;
-import com.StoreProject.store.modal.Reviews;
-import com.StoreProject.store.modal.User;
-import org.springframework.web.multipart.MultipartFile;
+import com.StoreProject.store.model.Products;
+import com.StoreProject.store.model.Reviews;
+import com.StoreProject.store.model.ReviewsResponse;
+import com.StoreProject.store.model.config.FilterService.Filter;
 
 import java.util.List;
 
 public interface ProductService {
-    public Products saveProduct(Products products);
-    public List<Products> getProducts(String gender, String category);
-    public ProductResponse getProduct(int id,int itemsPerPage);
-    public Reviews saveReview(Reviews review,int id);
+     List<Products> getProducts(String peopleType, String category, int page , int itemsPerPage, Filter filter);
+     Products getProduct(int id,int itemsPerPage);
+     ReviewsResponse saveReview(Reviews review,int id,int page,int itemsPerPage);
 
-    public List<Reviews> getReviews(int id,int page,int itemsPerPage);
+     ReviewsResponse getReviews(int id, int page, int itemsPerPage);
 
 }

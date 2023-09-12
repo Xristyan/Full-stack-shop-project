@@ -12,7 +12,9 @@ import {
 
 const DetailsForm = (props) => {
   const brandRef = useRef();
-  const detailsRef = useRef();
+  const genderRef = useRef();
+  const colorRef = useRef();
+  let isFormValid = true;
   const {
     value: enteredName,
     isValid: isNameValid,
@@ -45,21 +47,40 @@ const DetailsForm = (props) => {
     inputOnBlurHandler: DescriptionOnBlurHandler,
     reset: resetDescription,
   } = useInput(productDescriptionValidator);
+  if (
+    !isDescriptionValid ||
+    !isMaterialValid ||
+    !isNameValid ||
+    !isPriceValid
+  ) {
+    isFormValid = false;
+  } else {
+    isFormValid = true;
+  }
   const [isChecked, setIsChecked] = useState(false);
   const checkboxHandler = (e) => {
     setIsChecked(e.target.checked);
   };
-  useEffect(() => {
-    console.log(isChecked);
-  }, [isChecked]);
+  useEffect(() => {}, [isChecked]);
   const formHandler = (e) => {
     e.preventDefault();
-
-    brandRef.current.value = "Nike";
-    console.log(brandRef.current.value);
-
-    // console.log(detailsRef.current.value);
+    if (!isFormValid) {
+      return;
+    }
+    const newProduct = {
+      name: enteredName,
+      description: enteredDescription,
+      material: enteredMaterial,
+      color: colorRef.current.value,
+      price: +enteredPrice,
+      gender: genderRef.current.value,
+      forChildren: isChecked,
+      category: "",
+      brand: brandRef.current.value,
+    };
+    props.productHandler(newProduct);
   };
+
   return (
     <form onSubmit={formHandler} className={classes.detailsForm}>
       <Input
@@ -121,24 +142,34 @@ const DetailsForm = (props) => {
           placeholder="description"
           onBlur={DescriptionOnBlurHandler}
           onChange={DescriptionChangeHandler}
-          maxLength={30}
+          maxLength={150}
           style={{ resize: "none" }}
           rows="5"
           cols="30"
         ></textarea>
         {DescriptionHasError && <PopUp message={"Description is mandatory"} />}
       </div>
-      <select className={`${classes.input} ${classes.inputGender}`}>
-        <option>Male</option>
-        <option>Female</option>
+      <select ref={genderRef} className={classes.input}>
+        <option>Men</option>
+        <option>Women</option>
       </select>
       <label className={classes.checkboxContainer}>
         <input checked={isChecked} onChange={checkboxHandler} type="checkbox" />
         <div className={classes.checkmark}></div>
-        <label>For Children</label>
+        <span>For Children</span>
       </label>
-      <input placeholder="color" type="color" />
-      <button className={classes.submitButton}>Upload Item</button>
+      <div>
+        <select ref={colorRef} className={classes.input}>
+          <option>Black</option>
+          <option>White</option>
+          <option>Red</option>
+          <option>Blue</option>
+          <option>Green</option>
+        </select>
+      </div>
+      <button disabled={!isFormValid} className={classes.submitButton}>
+        Upload Item
+      </button>
     </form>
   );
 };

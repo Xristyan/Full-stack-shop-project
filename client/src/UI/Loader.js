@@ -3,7 +3,7 @@ const Loader = () => {
   return (
     <div className={classes.loader}>
       {[...Array(12)].map((el, i) => {
-        return <div className={classes[`bar${i + 1}`]}></div>;
+        return <div key={i} className={classes[`bar${i + 1}`]}></div>;
       })}
     </div>
   );

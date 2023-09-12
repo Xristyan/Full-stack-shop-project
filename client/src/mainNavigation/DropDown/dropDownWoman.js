@@ -8,7 +8,7 @@ const DropDownWomen = () => {
     <div className={classes.dropdown}>
       <NavLink
         className={({ isActive }) => (isActive ? classes.active : undefined)}
-        to="/Women"
+        to="Women/All"
       >
         Women
       </NavLink>

@@ -30,19 +30,7 @@
   display: block;
   cursor: pointer;
 }
-.filterButton {
-  border: none;
-  font-size: 1rem;
-  color: #242424;
-  border-right: 2px solid #242424;
-  display: flex;
-  align-items: center;
-  background-color: transparent;
-  cursor: pointer;
-}
-.filterButton:hover {
-  background-color: rgb(255, 255, 255, 0.5);
-}
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -63,6 +51,19 @@
 }
 .dropdown:hover .dropdown-content {
   display: block;
+}
+.filterButton {
+  border: none;
+  font-size: 1rem;
+  color: #242424;
+  border-right: 2px solid #242424;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  cursor: pointer;
+}
+.filterButton:hover {
+  background-color: rgb(255, 255, 255, 0.5);
 }
 .optionsContainer {
   display: flex;

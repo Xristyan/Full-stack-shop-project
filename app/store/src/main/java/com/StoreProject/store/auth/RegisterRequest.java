@@ -1,8 +1,8 @@
 package com.StoreProject.store.auth;
 
-import com.StoreProject.store.modal.Address;
-import com.StoreProject.store.modal.Cart;
-import com.StoreProject.store.modal.Role;
+import com.StoreProject.store.model.Address;
+import com.StoreProject.store.model.Cart;
+import com.StoreProject.store.model.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

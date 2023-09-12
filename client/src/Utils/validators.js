@@ -18,5 +18,5 @@ export const productMaterialValidator = (value) => {
   return MATERIAL_CONSTRAINS.includes(value.toUpperCase());
 };
 export const productDescriptionValidator = (value) => {
-  return /[a-zA-Z]/.test(value) && value.length >= 10 && value.length <= 30;
+  return /[a-zA-Z]/.test(value) && value.length >= 10 && value.length <= 150;
 };

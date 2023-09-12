@@ -18,10 +18,13 @@ const PriceFilter = () => {
     dispatch(filtersActions.showPricesFilterHandler());
   };
   const inputChangeHandler = (e, range) => {
+    e.preventDefault();
+    console.log(range);
+
     dispatch(filtersActions.priceFilterHandler(range));
   };
   return (
-    <section className={classes.filterSection}>
+    <form className={classes.filterSection}>
       <h2 onClick={showFilterHandler}>
         Price:<span>{showFilters ? "▲" : "▼"}</span>
       </h2>
@@ -53,7 +56,7 @@ const PriceFilter = () => {
           );
         })}
       </div>
-    </section>
+    </form>
   );
 };
 export default PriceFilter;

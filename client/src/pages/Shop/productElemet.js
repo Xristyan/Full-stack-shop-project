@@ -9,7 +9,7 @@ const ProductElement = (props) => {
         <div className={classes.content}>
           <div className={classes.headline}>{props.name}</div>
           <div className={classes.subtitle}>
-            {props.gender}'{props.category}
+            {props.gender}' {props.category}
           </div>
           <div className={classes.priceContent}>
             <div

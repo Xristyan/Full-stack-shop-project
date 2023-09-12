@@ -51,7 +51,6 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
-  // console.log(jwtDecode(localStorage.getItem("jwtToken")));
   return <RouterProvider router={router} />;
 }
 

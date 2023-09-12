@@ -11,10 +11,11 @@ const BrandFilter = () => {
     dispatch(filtersActions.showBrandsFilterHandler());
   };
   const inputChangeHandler = (e) => {
+    e.preventDefault();
     dispatch(filtersActions.brandFilterHandler(e.target.value));
   };
   return (
-    <section className={classes.filterSection}>
+    <form className={classes.filterSection}>
       <h2 onClick={showFilterHandler}>
         Brand:<span>{showFilters ? "▲" : "▼"}</span>
       </h2>
@@ -36,7 +37,7 @@ const BrandFilter = () => {
           );
         })}
       </div>
-    </section>
+    </form>
   );
 };
 export default BrandFilter;

@@ -1,8 +1,9 @@
 package com.StoreProject.store.controller;
 
-import com.StoreProject.store.modal.ProductResponse;
-import com.StoreProject.store.modal.Products;
-import com.StoreProject.store.modal.Reviews;
+import com.StoreProject.store.model.Products;
+import com.StoreProject.store.model.Reviews;
+import com.StoreProject.store.model.ReviewsResponse;
+import com.StoreProject.store.model.config.FilterService.Filter;
 import com.StoreProject.store.service.FileServiceImpl;
 import com.StoreProject.store.service.ProductService;
 import jakarta.validation.Valid;
@@ -31,40 +32,33 @@ public class ProductController {
      Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     private ProductService productService;
-//
-    @CrossOrigin
+
     @PostMapping("/add")
-    public ResponseEntity<?> uploadImageToFIleSystem(@RequestParam("product") String product,@RequestParam("image") List<MultipartFile>file) throws IOException {
+    public ResponseEntity<?> uploadImageToFIleSystem(@Valid @RequestParam("product") String product,@RequestParam("image") List<MultipartFile>file) throws IOException {
+    logger.info(product);
         String uploadImage = service.uploadImageToFileSystem(product,file);
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(uploadImage);
+    return ResponseEntity.status(HttpStatus.OK)
+            .body(uploadImage);
     }
 
-    @PostMapping("/addProduct")
-    public String add(@Valid @RequestBody Products products)
-    {
-       productService.saveProduct(products);
-        return "New product is added";
-    }
+@PostMapping("/getCategory")
+public List<Products> getProducts(@RequestBody Filter filter, @RequestParam String peopleType, @RequestParam String category, @RequestParam int page, @RequestParam int itemsPerPage){
 
-@GetMapping("/getCategory")
-public List<Products> getProducts(@RequestParam String gender, @RequestParam String category){
-        logger.info(category);
-    return productService.getProducts(gender,category);
+    return productService.getProducts(peopleType,category,page,itemsPerPage,filter);
 }
 @GetMapping("/getProduct/{id}")
-public ProductResponse getProduct(@PathVariable int id,@RequestParam int itemsPerPage)
+public Products getProduct(@PathVariable int id,@RequestParam int itemsPerPage)
 {
     return productService.getProduct(id,itemsPerPage);
 }
 
 @PostMapping("/{id}/addReview")
-    public ResponseEntity<Reviews> saveReview(@Valid @RequestBody Reviews review,@PathVariable int id)
+    public ResponseEntity<ReviewsResponse> saveReview(@Valid @RequestBody Reviews review,@PathVariable int id,@RequestParam int page , @RequestParam int itemsPerPage)
 {
-    return ResponseEntity.ok(productService.saveReview(review,id));
+    return ResponseEntity.ok(productService.saveReview(review,id,page,itemsPerPage));
 }
 @GetMapping("/{id}/reviews")
-    public ResponseEntity<List<Reviews>> getReviews(@PathVariable int id,@RequestParam int page ,@RequestParam int itemsPerPage)
+    public ResponseEntity<ReviewsResponse> getReviews(@PathVariable int id, @RequestParam int page , @RequestParam int itemsPerPage)
 {
     return ResponseEntity.ok(productService.getReviews(id,page,itemsPerPage));
 }
